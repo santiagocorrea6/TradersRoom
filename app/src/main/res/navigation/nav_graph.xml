@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.proyect.tradersroom.fragments.HomeFragment"
+        android:label="@string/home_fragment_label"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_HomeFragment_to_EducadoresFragment"
+            app:destination="@id/nav_educadores" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_educadores"
+        android:name="com.proyect.tradersroom.fragments.EducadoresFragment"
+        android:label="@string/educadores_fragment_label"
+        tools:layout="@layout/fragment_educadores">
+        <action
+            android:id="@+id/action_EducadoresFragment_to_LideresFragment"
+            app:destination="@id/nav_lideres" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_lideres"
+        android:name="com.proyect.tradersroom.fragments.LideresFragment"
+        android:label="@string/lideres_fragment_label"
+        tools:layout="@layout/fragment_lideres" >
+        <action
+            android:id="@+id/action_LideresFragment_to_BitacoraFragment"
+            app:destination="@id/nav_bitacora" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_bitacora"
+        android:name="com.proyect.tradersroom.fragments.BitacoraFragment"
+        android:label="@string/bitacora_fragment_label"
+        tools:layout="@layout/fragment_bitacora" >
+        <action
+            android:id="@+id/action_BitacoraFragment_to_HomeFragment"
+            app:destination="@id/nav_home" />
+    </fragment>
+</navigation>

@@ -1,0 +1,90 @@
+<resources>
+    <string name="app_name">TradersRooms - UsXXI</string>
+    <string name="titulo">titulo</string>
+    <string name="cedula">Cédula</string>
+    <string name="Correo">Correo</string>
+    <string name="Formulario">Formulario de Registro</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="nombre">Nombre</string>
+    <string name="guardar">GUARDAR</string>
+    <string name="recontra">Repetir Contraseña</string>
+    <string name="tv_genero">Genero:</string>
+    <string name="masculino">Masculino</string>
+    <string name="femenino">Femenino</string>
+    <string name="musica">Musica</string>
+    <string name="deportes">Deportes</string>
+    <string name="netflix">Netflix</string>
+    <string name="ciudadNacimiento">Ciudad de Nacimiento</string>
+    <string name="fecha_nacimiento">MM/dd/yyyy</string>
+    <string name="fecha_nacimiento_lb">Fecha de Nacimiento:</string>
+    <string name="otra_actividad">otra_actividad</string>
+    <string name="otra_actividad_mas">Otra actividad mas</string>
+    <string name="pasatiempos">Pasatiempos:</string>
+    <string name="registro">Registro</string>
+    <string name="login">Login</string>
+    <string name="splash">splash</string>
+    <string name="cerrarSesion">cerrarSesion</string>
+    <string name="inicio">Inicio de sesión</string>
+    <string name="reg">¿No tienes una cuenta?</string>
+    <string name="bienvenido">BIENVENIDO</string>
+
+    <string-array name="lista_ciudades">
+        <item>Medellin</item>
+        <item>Bogota</item>
+        <item>Barranquilla</item>
+        <item>Cali</item>
+    </string-array>
+    <string-array name="lista_educadores">
+        <item>Alejandro Bravo</item>
+        <item>Alejandro Galvez</item>
+        <item>Alejandro Ocampo</item>
+        <item>Danis Bravo</item>
+        <item>Jairo Betancourt</item>
+        <item>Jairo Betancourt</item>
+        <item>Jhan Carlos Valencia</item>
+        <item>Maicol Angulo</item>
+        <item>Rivaldo Perea</item>
+    </string-array>
+
+    <string-array name="lista_lideres">
+        <item>Alejandro Velasques</item>
+        <item>Alejandro Bravo</item>
+        <item>Alejandro Galvez</item>
+        <item>Andres Calderón</item>
+        <item>David Dominguez</item>
+        <item>Johan Muñoz</item>
+        <item>Juan David Mosquera</item>
+        <item>Juan Manuel Caicedo</item>
+        <item>Maicol Angulo</item>
+        <item>Melissa Pérez</item>
+        <item>Yamid Prado</item>
+    </string-array>
+
+
+
+    <string name="title_activity_main">MainActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="home_fragment_label">Home</string>
+    <string name="educadores_fragment_label">Educadores</string>
+    <string name="lideres_fragment_label">Lideres</string>
+    <string name="bitacora_fragment_label">Bitacora</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lideres">Lideres</string>
+    <string name="bitacora">Bitacora</string>
+    <string name="title_activity_bottom_navigation">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="title_activity_botton_navigation">MainActivity</string>
+</resources>
