@@ -1,25 +1,17 @@
 <resources>
     <string name="app_name">TradersRooms - UsXXI</string>
     <string name="titulo">titulo</string>
-    <string name="cedula">Cédula</string>
+    <string name="telefono">Teléfono</string>
     <string name="Correo">Correo</string>
     <string name="Formulario">Formulario de Registro</string>
     <string name="contrasena">Contraseña</string>
     <string name="nombre">Nombre</string>
     <string name="guardar">GUARDAR</string>
     <string name="recontra">Repetir Contraseña</string>
-    <string name="tv_genero">Genero:</string>
-    <string name="masculino">Masculino</string>
-    <string name="femenino">Femenino</string>
-    <string name="musica">Musica</string>
-    <string name="deportes">Deportes</string>
-    <string name="netflix">Netflix</string>
-    <string name="ciudadNacimiento">Ciudad de Nacimiento</string>
     <string name="fecha_nacimiento">MM/dd/yyyy</string>
     <string name="fecha_nacimiento_lb">Fecha de Nacimiento:</string>
     <string name="otra_actividad">otra_actividad</string>
     <string name="otra_actividad_mas">Otra actividad mas</string>
-    <string name="pasatiempos">Pasatiempos:</string>
     <string name="registro">Registro</string>
     <string name="login">Login</string>
     <string name="splash">splash</string>
@@ -28,11 +20,10 @@
     <string name="reg">¿No tienes una cuenta?</string>
     <string name="bienvenido">BIENVENIDO</string>
 
-    <string-array name="lista_ciudades">
-        <item>Medellin</item>
-        <item>Bogota</item>
-        <item>Barranquilla</item>
-        <item>Cali</item>
+    <string-array name="lista_roll">
+        <item>Alumno</item>
+        <item>Lider</item>
+        <item>Educador</item>
     </string-array>
     <string-array name="lista_educadores">
         <item>Alejandro Bravo</item>
@@ -87,4 +78,5 @@
     <string name="nav_header_desc">Navigation header</string>
 
     <string name="title_activity_botton_navigation">MainActivity</string>
+    <string name="info">INFOMARCIÓN DE LA APP</string>
 </resources>

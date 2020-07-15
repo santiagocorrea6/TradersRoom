@@ -11,6 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_registro.*
 
 class BottomNavigationActivity : AppCompatActivity() {
@@ -44,10 +45,10 @@ class BottomNavigationActivity : AppCompatActivity() {
 
         // CERRAR SESION
         if (item.itemId == R.id.menu_actividad) {
-            //val intent = Intent(this, LoginActivity::class.java)
-            //intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            //startActivity(intent);
-            finish()
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
         }
         return super.onOptionsItemSelected(item)
     }

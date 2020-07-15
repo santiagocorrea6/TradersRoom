@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "101226884325",
+    "firebase_url": "https://tradersroom-35771.firebaseio.com",
+    "project_id": "tradersroom-35771",
+    "storage_bucket": "tradersroom-35771.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101226884325:android:e27f6a3eacc8f44637f80c",
+        "android_client_info": {
+          "package_name": "com.proyect.tradersroom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "101226884325-456lhd0g5ts78tvurfhsbh61ga5j9gn2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.proyect.tradersroom",
+            "certificate_hash": "b79edceda7ce0a23bfe61f1407a92ed2e0addf13"
+          }
+        },
+        {
+          "client_id": "101226884325-6c5j04ngkj4q7pjo9h0bp8itqlpnadkq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBV2pzxxHF3saKnB4a7YkzWrhT4AwKq8_8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "101226884325-6c5j04ngkj4q7pjo9h0bp8itqlpnadkq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -5,21 +5,30 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
 import android.widget.DatePicker
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.proyect.tradersroom.model.remote.UsuarioRemote
 import kotlinx.android.synthetic.main.activity_registro.*
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.regex.Pattern
 
 class RegistroActivity : AppCompatActivity() {
 
     private lateinit var fecha: String
     private var cal = Calendar.getInstance()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)  //Ciclo de vida
-        setContentView(R.layout.activity_registro) //Implementa contenido de vista
-        Log.d("OnCreate", "ok")
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_registro)
+
+        //var flagRegistro = false
 
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
             override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
@@ -34,9 +43,7 @@ class RegistroActivity : AppCompatActivity() {
             }
         }
 
-        // BOTON DEL CALENDARIO
         ib_calendario.setOnClickListener {
-            // fun onCalendarioButtonClicked(view: View) {
             DatePickerDialog(
                 this,
                 dateSetListener,
@@ -44,38 +51,32 @@ class RegistroActivity : AppCompatActivity() {
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH)
             ).show()
-            //    }
         }
 
-        // BOTON GUARDAR REGISTRO
-        bt_guardar.setOnClickListener {
-            Log.d("ButtonClicked", "true")
+        //AQUI EMPIEZA FIREBASE
+        val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
-            // DECLARACION DE LAS VARIABLES
-            var pasatiempos = ""
+        bt_registrar.setOnClickListener {
+
             val nombre = et_nombre.text.toString()
-            val cedula = et_cedula.text.toString()
+            val telefono = et_telefono.text.toString()
             val correo = et_correo.text.toString()
             val contrasena = et_contrasena.text.toString()
             val rep_contrasena = et_contrasena2.text.toString()
-            //val genero = if (rb_masculino.isChecked) "Masculino" else "Femenino"
-            var ciudadNacimiento = sp_ciudad_nacimiento.selectedItem.toString()
+            var roll = sp_roll.selectedItem.toString()
 
             val passLength: Int = stringLengthFunc("$contrasena")
             tv_resultado.text = "$passLength"
 
-            // VERIFICACION DE LOS PASATIEMPOS
-            //if (ch_musica.isChecked) pasatiempos = "$pasatiempos \n cine"
-            //if (ch_deportes.isChecked) pasatiempos = "$pasatiempos \nps4"
-            //if (ch_netflix.isChecked) pasatiempos = "$pasatiempos \nseries"
-
-            // VERIFICACION DE LOS CAMPOS LLENADOS
+            //VERIFICACION DE LOS CAMPOS LLENADOS
             if (nombre.isEmpty()) { //NOMBRE VACIO
                 et_nombre.error = "Por favor ingrese su nombre"
-            } else if (cedula.isEmpty()) { //CEDULA VACIA
-                et_cedula.error = "Por favor ingrese su numero de cedula"
+            } else if (telefono.isEmpty()) { //TELEFONO VACIO
+                et_telefono.error = "Por favor ingrese su numero telefonico"
             } else if (correo.isEmpty()) { //CORREO VACIO
                 et_correo.error = "Por favor ingrese su correo"
+            } else if (!validarEmail(correo)) {
+                et_correo.setError("Email no válido")
             } else if (contrasena.isEmpty()) { //CONTRASEÑA VACIA
                 et_contrasena.error = "Por favor ingrese una contraseña"
             } else if (passLength < 6) { //CONTRASEÑA DE 6 DIGITOS
@@ -84,33 +85,84 @@ class RegistroActivity : AppCompatActivity() {
                 et_contrasena2.error = "Por favor repita su contraseña"
             } else if (contrasena != rep_contrasena) { //CONTRASEÑAS DIFERENTES
                 et_contrasena2.error = "Las contraseñas no coinciden"
-            }
-
-            // CONTRASEÑAS IGUALES Y TODOS LOS CAMPOS LLENOS
-            else if (contrasena == rep_contrasena && contrasena.isNotEmpty() && rep_contrasena.isNotEmpty()) {
-                //tv_resultado.text = "DATOS PERSONALES \n Nombre: $nombre \n Cedula: $cedula \n Correo: $correo \n Genero: $genero \n Ciudad: $ciudadNacimiento"
-
-                val intent = Intent()
-                intent.putExtra("correo", et_correo.text.toString())
-                intent.putExtra("contrasena", et_contrasena.text.toString())
-                setResult(Activity.RESULT_OK, intent)
-                finish()
-            }
-
-            // FECHA VACIA
-            else if (fecha.isEmpty()) {
+            } else if (tv_fecha_nacimiento.text.toString().isEmpty()) { // FECHA VACIA
                 tv_fecha_nacimiento.error = "Por favor ingrese su fecha de nacimiento"
-            }
+                tv_resultado.text = "Por favor ingrese su fecha de nacimiento"
+            } else if (tv_fecha_nacimiento.text.toString() == "MM/dd/yyyy") { //FECHA INCORRECTA
+                tv_fecha_nacimiento.error = "Por favor ingrese su fecha de nacimiento"
+                tv_resultado.text = "Por favor ingrese su fecha de nacimiento"
+            } else if (contrasena == rep_contrasena && contrasena.isNotEmpty() && rep_contrasena.isNotEmpty()) {
+                mAuth.createUserWithEmailAndPassword(correo, contrasena)
+                    .addOnCompleteListener(
+                        this
+                    ) { task ->
+                        if (task.isSuccessful) {
+                            crearUsuarioEnBaseDeDatos()
+                            Toast.makeText(
+                                this, "Registro exitoso",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            onBackPressed()
+                            //startActivity(Intent(this, LoginActivity::class.java))
+                            //finish()
 
-            // ERROR GENERAL EN EL REGISTRO
-            else {
+                        } else {
+                            Log.w("TAG", "signInWithEmail:failure", task.getException())
+                            Toast.makeText(
+                                this,
+                                "User Authentication Failed: " + task.getException()?.message,
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+            } else { //ERROR GENERAL EN EL REGISTRO
                 tv_resultado.text = "Error en el registro"
             }
+
+   // if (flagRegistro == true) {
+
+    //}
+
+
         }
+
+        }
+
+
+
+    private fun crearUsuarioEnBaseDeDatos() {
+        val database : FirebaseDatabase = FirebaseDatabase.getInstance()
+        val myRef : DatabaseReference = database.getReference("usuarios")
+
+        val id = myRef.push().key
+        val nombre = et_nombre.text.toString()
+        val telefono = et_telefono.text.toString()
+        val correo = et_correo.text.toString()
+        val contrasena = et_contrasena.text.toString()
+        val rep_contrasena = et_contrasena2.text.toString()
+        var roll = sp_roll.selectedItem.toString()
+
+        val usuario = UsuarioRemote(
+            id,
+            nombre,
+            telefono,
+            correo,
+            "hoy",
+            roll,
+            "perfil.png"
+        )
+
+        myRef.child(id!!).setValue(usuario)
     }
 
-    // VERIFICA LA LONGITUD DE UN STRING
+    //VERIFICA LA LONGITUD DE UN STRING
     val stringLengthFunc: (String) -> Int = { input ->
         input.length
+    }
+
+    //Validar correo
+    private fun validarEmail(email: String): Boolean {
+        val pattern: Pattern = Patterns.EMAIL_ADDRESS
+        return pattern.matcher(email).matches()
     }
 }
