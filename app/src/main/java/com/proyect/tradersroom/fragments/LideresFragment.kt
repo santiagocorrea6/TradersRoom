@@ -54,12 +54,6 @@ class LideresFragment : Fragment() {
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("lideres")
 
-        //val storage = FirebaseStorage.getInstance()
-        //val imageRef = storage.getReference().child("bravo.jpg")
-
-
-
-
         val postListener = object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
             }

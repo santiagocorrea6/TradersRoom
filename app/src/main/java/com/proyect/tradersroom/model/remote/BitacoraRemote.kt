@@ -11,3 +11,4 @@ class BitacoraRemote (
     val resultado: String = "",
     val ganancia: String = ""
 )
+

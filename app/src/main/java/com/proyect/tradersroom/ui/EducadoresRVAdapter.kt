@@ -31,7 +31,7 @@ class EducadoresRVAdapter (
 
         fun bindEducador(educador: EducadorRemote){
             itemView.tv_paridad.text = educador.nombre
-            itemView.tv_fecha.text = educador.roll
+            itemView.tv_fecha_nacimiento.text = educador.roll
             //Picasso.with(context).load("http://i.imgur.com/DvpvklR.png").into(imageView);
             if (!educador.foto.isNullOrEmpty())
                 Picasso.get().load(educador.foto).into(itemView.iv_foto);

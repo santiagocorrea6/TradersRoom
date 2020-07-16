@@ -37,6 +37,23 @@
         <item>Rivaldo Perea</item>
     </string-array>
 
+    <string-array name="lista_paridad">
+        <item>EURUSD</item>
+        <item>GBPJPY</item>
+        <item>USDCAD</item>
+        <item>GBPUSD</item>
+    </string-array>
+
+    <string-array name="lista_buy">
+        <item>Buy</item>
+        <item>Sell</item>
+    </string-array>
+
+    <string-array name="lista_resultado">
+        <item>Ganada</item>
+        <item>Perdida</item>
+    </string-array>
+
     <string-array name="lista_lideres">
         <item>Alejandro Velasques</item>
         <item>Alejandro Bravo</item>

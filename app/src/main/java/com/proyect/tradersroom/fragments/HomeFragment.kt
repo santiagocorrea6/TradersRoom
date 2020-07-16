@@ -17,9 +17,6 @@ import com.proyect.tradersroom.R
 import com.proyect.tradersroom.model.remote.UsuarioRemote
 import kotlinx.android.synthetic.main.fragment_home.*
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class HomeFragment : Fragment() {
 
     override fun onCreateView(
@@ -39,7 +36,7 @@ class HomeFragment : Fragment() {
 
         Toast.makeText(requireContext(), "Bienvenido $correo", Toast.LENGTH_SHORT).show()
 
-        buscarEnFirebase(correo)
+        //buscarEnFirebase(correo)
 
     }
 
@@ -56,7 +53,7 @@ class HomeFragment : Fragment() {
                     val usuario = datasnapshot.getValue(UsuarioRemote::class.java)
 
                     if (usuario?.correo == correo){
-                        tv_hola.text = "Bienvenido ${usuario?.nombre}"
+                        //tv_hola.text = "Bienvenido ${usuario?.nombre}"
                         //Toast.makeText(requireContext(), "Bienvenido ${usuario?.nombre}", Toast.LENGTH_SHORT).show()
                     }
                 }

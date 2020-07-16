@@ -31,7 +31,7 @@ class LideresRVAdapter (
 
         fun bindLider(lider: LiderRemote){
             itemView.tv_paridad.text = lider.nombre
-            itemView.tv_fecha.text = lider.rango
+            itemView.tv_fecha_nacimiento.text = lider.rango
             //Picasso.with(context).load("http://i.imgur.com/DvpvklR.png").into(imageView);
 
             //if (!lider.foto.isNullOrEmpty())
