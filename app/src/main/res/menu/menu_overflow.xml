@@ -3,5 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_actividad"
+        android:title="Perfil"/>
+    <item
+        android:id="@+id/menu_actividad2"
         android:title="Cerrar Sesion"/>
 </menu>

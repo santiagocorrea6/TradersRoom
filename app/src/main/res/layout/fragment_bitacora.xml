@@ -125,12 +125,12 @@
         android:text="Guardar"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toTopOf="@+id/bt_resumen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/bt_resumen"
         android:layout_width="305dp"
         android:layout_height="51dp"
         android:layout_marginBottom="56dp"

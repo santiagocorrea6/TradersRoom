@@ -52,7 +52,6 @@
     </string-array>
 
 
-
     <string name="title_activity_main">MainActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="home_fragment_label">Home</string>

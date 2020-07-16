@@ -22,9 +22,9 @@ class BitacoraFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*bt_bitacora.setOnClickListener {
-            findNavController().navigate(R.id.action_BitacoraFragment_to_HomeFragment)
-        }*/
+        bt_resumen.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_bitacora_to_resumenFragment)
+        }
     }
 
 

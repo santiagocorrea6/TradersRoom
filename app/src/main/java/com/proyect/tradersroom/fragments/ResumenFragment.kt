@@ -11,53 +11,45 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.UploadTask
 import com.proyect.tradersroom.R
-import com.proyect.tradersroom.model.remote.LiderRemote
-import com.proyect.tradersroom.ui.LideresRVAdapter
-import kotlinx.android.synthetic.main.fragment_lideres.*
+import com.proyect.tradersroom.model.remote.BitacoraRemote
+import com.proyect.tradersroom.ui.BitacorasRVAdapter
+import kotlinx.android.synthetic.main.fragment_resumen.*
 
+class ResumenFragment : Fragment() {
 
-class LideresFragment : Fragment() {
-
-    private val lideresList: MutableList<LiderRemote> = mutableListOf()
-    private lateinit var lideresAdapter : LideresRVAdapter
+    private val bitacorasList: MutableList<BitacoraRemote> = mutableListOf()
+    private lateinit var bitacorasAdapter : BitacorasRVAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lideres, container, false)
+        return inflater.inflate(R.layout.fragment_resumen, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        cargarLideres()
+        cargarBitacora()
 
-        rv_lideres.layoutManager = LinearLayoutManager(
+        rv_bitacoras.layoutManager = LinearLayoutManager(
             requireContext(),
             RecyclerView.VERTICAL,
             false
         )
 
-        rv_lideres.setHasFixedSize(true) //todos del mismo tamaño
+        rv_bitacoras.setHasFixedSize(true) //todos del mismo tamaño
 
-        lideresAdapter = LideresRVAdapter(lideresList as ArrayList<LiderRemote>)
-        rv_lideres.adapter = lideresAdapter
+        bitacorasAdapter = BitacorasRVAdapter(bitacorasList as ArrayList<BitacoraRemote>)
+        rv_bitacoras.adapter = bitacorasAdapter
 
     }
 
-    private fun cargarLideres() {
+    private fun cargarBitacora() {
         val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("lideres")
-
-        //val storage = FirebaseStorage.getInstance()
-        //val imageRef = storage.getReference().child("bravo.jpg")
-
-
+        val myRef = database.getReference("bitacora").child("santiagocorrea54")
 
 
         val postListener = object : ValueEventListener {
@@ -66,11 +58,11 @@ class LideresFragment : Fragment() {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(datasnapshot: DataSnapshot in snapshot.children){
-                    val lider = datasnapshot.getValue(LiderRemote::class.java)
-                    lideresList.add(lider!!)
+                    val bitacora = datasnapshot.getValue(BitacoraRemote::class.java)
+                    bitacorasList.add(bitacora!!)
                 }
 
-                lideresAdapter.notifyDataSetChanged()
+                bitacorasAdapter.notifyDataSetChanged()
             }
         }
         myRef.addValueEventListener(postListener)

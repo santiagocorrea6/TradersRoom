@@ -1,18 +1,16 @@
 package com.proyect.tradersroom
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_registro.*
 
 class BottomNavigationActivity : AppCompatActivity() {
 
@@ -44,10 +42,16 @@ class BottomNavigationActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         // CERRAR SESION
-        if (item.itemId == R.id.menu_actividad) {
+        if (item.itemId == R.id.menu_actividad2) {
             FirebaseAuth.getInstance().signOut()
             val intent = Intent(this, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
+
+        if (item.itemId == R.id.menu_actividad){
+            //findNavController().navigate(R.id.action_perfilFragment)
+            val intent = Intent(this, PerfilActivity::class.java)
             startActivity(intent)
         }
         return super.onOptionsItemSelected(item)

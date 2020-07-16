@@ -1,6 +1,5 @@
 package com.proyect.tradersroom
 
-import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +9,7 @@ import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.proyect.tradersroom.model.remote.UsuarioRemote
@@ -18,17 +18,19 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
 
+
 class RegistroActivity : AppCompatActivity() {
 
     private lateinit var fecha: String
     private var cal = Calendar.getInstance()
+    var flagRegistro = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
 
-        //var flagRegistro = false
+
 
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
             override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
@@ -68,7 +70,6 @@ class RegistroActivity : AppCompatActivity() {
             val passLength: Int = stringLengthFunc("$contrasena")
             tv_resultado.text = "$passLength"
 
-            //VERIFICACION DE LOS CAMPOS LLENADOS
             if (nombre.isEmpty()) { //NOMBRE VACIO
                 et_nombre.error = "Por favor ingrese su nombre"
             } else if (telefono.isEmpty()) { //TELEFONO VACIO
@@ -91,20 +92,24 @@ class RegistroActivity : AppCompatActivity() {
             } else if (tv_fecha_nacimiento.text.toString() == "MM/dd/yyyy") { //FECHA INCORRECTA
                 tv_fecha_nacimiento.error = "Por favor ingrese su fecha de nacimiento"
                 tv_resultado.text = "Por favor ingrese su fecha de nacimiento"
-            } else if (contrasena == rep_contrasena && contrasena.isNotEmpty() && rep_contrasena.isNotEmpty()) {
+            }
+
+            else {
+                //if (contrasena == rep_contrasena && contrasena.isNotEmpty() && rep_contrasena.isNotEmpty()) {
                 mAuth.createUserWithEmailAndPassword(correo, contrasena)
                     .addOnCompleteListener(
                         this
                     ) { task ->
                         if (task.isSuccessful) {
-                            crearUsuarioEnBaseDeDatos()
+
+                            crearUsuarioEnFirebase(nombre, telefono, correo, roll)
                             Toast.makeText(
                                 this, "Registro exitoso",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            onBackPressed()
-                            //startActivity(Intent(this, LoginActivity::class.java))
-                            //finish()
+                            FirebaseAuth.getInstance().signOut()
+                            startActivity(Intent(this, LoginActivity::class.java))
+                            finish()
 
                         } else {
                             Log.w("TAG", "signInWithEmail:failure", task.getException())
@@ -115,32 +120,22 @@ class RegistroActivity : AppCompatActivity() {
                             ).show()
                         }
                     }
-            } else { //ERROR GENERAL EN EL REGISTRO
-                tv_resultado.text = "Error en el registro"
             }
 
-   // if (flagRegistro == true) {
-
-    //}
-
 
         }
+    }
 
-        }
-
-
-
-    private fun crearUsuarioEnBaseDeDatos() {
-        val database : FirebaseDatabase = FirebaseDatabase.getInstance()
-        val myRef : DatabaseReference = database.getReference("usuarios")
+    private fun crearUsuarioEnFirebase(
+        nombre: String,
+        telefono: String,
+        correo: String,
+        roll: String
+    ) {
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val myRef: DatabaseReference = database.getReference("usuarios")
 
         val id = myRef.push().key
-        val nombre = et_nombre.text.toString()
-        val telefono = et_telefono.text.toString()
-        val correo = et_correo.text.toString()
-        val contrasena = et_contrasena.text.toString()
-        val rep_contrasena = et_contrasena2.text.toString()
-        var roll = sp_roll.selectedItem.toString()
 
         val usuario = UsuarioRemote(
             id,
@@ -149,7 +144,7 @@ class RegistroActivity : AppCompatActivity() {
             correo,
             "hoy",
             roll,
-            "perfil.png"
+            "https://url2.cl/cjv4I"
         )
 
         myRef.child(id!!).setValue(usuario)
