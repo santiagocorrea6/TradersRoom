@@ -75,6 +75,7 @@
     <string name="educadores_fragment_label">Educadores</string>
     <string name="lideres_fragment_label">Lideres</string>
     <string name="bitacora_fragment_label">Bitacora</string>
+    <string name="resumen_fragment_label">Resumen bitácora</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
@@ -95,4 +96,12 @@
 
     <string name="title_activity_botton_navigation">MainActivity</string>
     <string name="info">INFOMARCIÓN DE LA APP</string>
+    <string name="fecha">Fecha:</string>
+    <string name="mesDiaAño">MM/DD/AAAA</string>
+    <string name="paridad">Paridad:</string>
+    <string name="buySell">Buy/Sell:</string>
+    <string name="inversion">"Inversión: "</string>
+    <string name="rentabilidad">Rentabilidad:</string>
+    <string name="resultado">"Resultado: "</string>
+    <string name="resumenBitacora">Resumen bitácora</string>
 </resources>

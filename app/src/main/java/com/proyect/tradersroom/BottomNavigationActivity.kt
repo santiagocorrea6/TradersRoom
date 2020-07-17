@@ -24,7 +24,7 @@ class BottomNavigationActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_educadores, R.id.nav_lideres, R.id.nav_bitacora
+                R.id.nav_home, R.id.nav_educadores, R.id.nav_lideres, R.id.nav_bitacora, R.id.resumenFragment
             )
         )
 

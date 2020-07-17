@@ -5,18 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="5dp"
     tools:context=".fragments.BitacoraFragment">
 
     <TextView
         android:id="@+id/tv_titulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="registrar operacion" />
+        android:gravity="center"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:text="REGISTRAR OPERACIÓN"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="end"
         android:background="@color/yellow"
         android:backgroundTint="@color/yellow"
         android:clickable="true"
@@ -26,24 +34,27 @@
         android:id="@+id/tv_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="fecha:" />
+        android:paddingLeft="10dp"
+        android:text="@string/fecha" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="44dp"
+        android:layout_height="40dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_fecha"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="MM/dd/yyyy" />
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/mesDiaAño" />
 
         <ImageButton
             android:id="@+id/ib_calendario2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@android:color/background_dark"
             app:srcCompat="@android:drawable/ic_menu_my_calendar" />
@@ -52,20 +63,22 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_paridad"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Paridad:" />
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/paridad" />
 
         <Spinner
             android:id="@+id/sp_divisa"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:entries="@array/lista_paridad" />
 
@@ -73,86 +86,98 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_buySell"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Buy/Sell" />
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/buySell" />
 
         <Spinner
             android:id="@+id/sp_buySell"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:entries="@array/lista_buy" />
+            android:entries="@array/lista_buy"
+            android:gravity="center_vertical" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_inversion"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Inversion" />
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/inversion" />
 
         <EditText
             android:id="@+id/et_inversion"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
+            android:gravity="center_vertical"
             android:inputType="number" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_rentabilidad"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="rentabilidad:" />
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/rentabilidad" />
 
         <EditText
             android:id="@+id/et_rentabilidad"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
+            android:gravity="center_vertical"
             android:inputType="number" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="106dp"
+        android:layout_height="40dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/tv_resultado"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="resultado" />
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/resultado" />
 
         <Spinner
             android:id="@+id/sp_resultado"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:entries="@array/lista_resultado" />
+            android:entries="@array/lista_resultado"
+            android:gravity="center_vertical" />
 
     </LinearLayout>
 
@@ -160,12 +185,18 @@
         android:id="@+id/bt_guardar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Guardar" />
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/black"
+        android:text="@string/guardar"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/bt_resumen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Resumen Bitacora" />
+        android:background="@color/black"
+        android:text="@string/resumenBitacora"
+        android:textColor="@color/white" />
 
 </LinearLayout>
