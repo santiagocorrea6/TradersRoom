@@ -90,7 +90,8 @@ class BitacoraFragment : Fragment() {
                 val id = myRef.push().key
 
                 val bitacora = BitacoraRemote(
-                    id,
+                    //id,
+                        "4",
                     "100",
                     fecha,
                     paridad,

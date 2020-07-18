@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
         val user: FirebaseUser? = mAuth.currentUser
         val correo = user?.email
 
-        Toast.makeText(requireContext(), "Bienvenido $correo", Toast.LENGTH_SHORT).show()
+    //    Toast.makeText(requireContext(), "Bienvenido $correo", Toast.LENGTH_SHORT).show()
 
         //buscarEnFirebase(correo)
 

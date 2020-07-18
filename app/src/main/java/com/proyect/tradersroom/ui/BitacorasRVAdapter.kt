@@ -30,11 +30,11 @@ class BitacorasRVAdapter (
 
         fun bindBitacora(bitacora: BitacoraRemote){
             itemView.tv_id.text = bitacora.id
-            itemView.tv_rentabilidad.text = bitacora.rentabilidad.toString()
+            itemView.tv_rentabilidad.text = "${bitacora.rentabilidad.toString()}%"
             itemView.tv_paridad.text = bitacora.paridad
             itemView.tv_fecha_nacimiento.text = bitacora.fecha
-            itemView.tv_ganancia.text = bitacora.ganancia.toString()
-            itemView.tv_inversion.text = bitacora.inversion.toString()
+            itemView.tv_ganancia.text = "$${bitacora.ganancia.toString()}"
+            itemView.tv_inversion.text = "$${bitacora.inversion.toString()}"
         }
     }
 }
