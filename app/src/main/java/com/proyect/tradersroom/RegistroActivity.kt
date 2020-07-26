@@ -6,7 +6,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
+import android.widget.ArrayAdapter
 import android.widget.DatePicker
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -63,7 +65,10 @@ class RegistroActivity : AppCompatActivity() {
             val correo = et_correo.text.toString()
             val contrasena = et_contrasena.text.toString()
             val rep_contrasena = et_contrasena2.text.toString()
+
+
             var roll = sp_roll.selectedItem.toString()
+
 
             val passLength: Int = stringLengthFunc("$contrasena")
 
