@@ -24,7 +24,7 @@ class BitacoraFragment : Fragment() {
 
     private lateinit var fecha: String
     private var cal = Calendar.getInstance()
-
+//hola
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
