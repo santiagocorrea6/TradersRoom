@@ -4,10 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -17,16 +15,13 @@ import com.proyect.tradersroom.model.remote.BitacoraRemote
 import com.proyect.tradersroom.model.remote.UsuarioRemote
 import com.proyect.tradersroom.ui.BitacorasRVAdapter
 import kotlinx.android.synthetic.main.activity_resumen.*
-import kotlinx.android.synthetic.main.fragment_bitacora.*
-import kotlinx.android.synthetic.main.fragment_resumen.rv_bitacoras
-import kotlinx.android.synthetic.main.fragment_resumen.tv_capitalActual
-import kotlinx.android.synthetic.main.fragment_resumen.tv_capitalInicial
 
 class ResumenActivity : AppCompatActivity() {
     private val bitacorasList: MutableList<BitacoraRemote> = mutableListOf()
     private lateinit var bitacorasAdapter : BitacorasRVAdapter
     var bitacoraId = "hola"
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_resumen)
@@ -186,6 +181,7 @@ class ResumenActivity : AppCompatActivity() {
         myRef.addValueEventListener(postListener)
     }
 
+    @SuppressLint("SetTextI18n")
     private fun writeInTextView(capitalActual: String, capitalInicial: String) {
         tv_capitalInicial.setText("$$capitalInicial")
         tv_capitalActual.setText("$$capitalActual")
