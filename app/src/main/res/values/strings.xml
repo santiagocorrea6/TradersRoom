@@ -104,6 +104,11 @@
     <string name="rentabilidad">Rentabilidad:</string>
     <string name="resultado">"Resultado: "</string>
     <string name="resumenBitacora">Resumen bitácora</string>
+    <string name="registrate">Regístrate</string>
+    <string name="iniciarsesion">Iniciar sesión</string>
+    <string name="registraroperacion">REGISTRAR OPERACIÓN</string>
+    <string name="usd">$</string>
+    <string name="porcentaje">%</string>
     <string name="capitalInicial">Capital Inicial</string>
     <string name="capitalActual">Capital Actual</string>
     <string name="cap">USD</string>

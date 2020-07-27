@@ -23,8 +23,6 @@ class PerfilActivity : AppCompatActivity() {
         val user: FirebaseUser? = mAuth.currentUser
         val correo = user?.email
 
-      //  Toast.makeText(this, "Bienvenido $correo", Toast.LENGTH_SHORT).show()
-
         buscarEnFirebase(correo)
     }
 
