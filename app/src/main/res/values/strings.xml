@@ -2,7 +2,7 @@
     <string name="app_name">TradersRooms - UsXXI</string>
     <string name="titulo">titulo</string>
     <string name="telefono">Teléfono</string>
-    <string name="Correo">Correo</string>
+    <string name="Correo">Correo electrónico</string>
     <string name="Formulario">Formulario de Registro</string>
     <string name="contrasena">Contraseña</string>
     <string name="nombre">Nombre</string>
@@ -101,7 +101,12 @@
     <string name="paridad">Paridad:</string>
     <string name="buySell">Buy/Sell:</string>
     <string name="inversion">"Inversión: "</string>
-    <string name="rentabilidad">Rentabilidad:</string>
+    <string name="rentabilidad">% Rentabilidad:</string>
     <string name="resultado">"Resultado: "</string>
     <string name="resumenBitacora">Resumen bitácora</string>
+    <string name="registrate">Regístrate</string>
+    <string name="iniciarsesion">Iniciar sesión</string>
+    <string name="registraroperacion">REGISTRAR OPERACIÓN</string>
+    <string name="usd">$</string>
+    <string name="porcentaje">%</string>
 </resources>

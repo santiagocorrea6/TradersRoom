@@ -1,176 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_margin="0dp"
-    android:background="@drawable/fondo2">
+    android:background="@drawable/fondoregistro1">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="18sp"
-        android:background="@drawable/ic_launcher_background"
-        android:orientation="vertical"
-        tools:context=".RegistroActivity">
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/registro"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="30sp" />
-
-        <EditText
-            android:id="@+id/et_nombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:fontFamily="sans-serif-condensed-light"
-            android:hint="@string/nombre"
-            android:inputType="textPersonName"
-            android:textColor="@color/black" />
-
-        <EditText
-            android:id="@+id/et_telefono"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:fontFamily="sans-serif-condensed-light"
-            android:hint="@string/telefono"
-            android:inputType="number"
-            android:textColor="@color/black" />
-
-        <EditText
-            android:id="@+id/et_correo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:fontFamily="sans-serif-condensed-light"
-            android:hint="@string/Correo"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/black" />
-
-        <EditText
-            android:id="@+id/et_contrasena"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:fontFamily="sans-serif-condensed-light"
-            android:hint="@string/contrasena"
-            android:inputType="textPassword"
-            android:textColor="@color/black" />
-
-        <EditText
-            android:id="@+id/et_contrasena2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:ems="10"
-            android:fontFamily="sans-serif-condensed-light"
-            android:hint="@string/recontra"
-            android:inputType="textPassword"
-            android:textColor="@color/black" />
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView3"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-condensed-light"
-                android:text="Roll"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:layout_margin="18sp"
+                android:orientation="vertical">
 
-            <Spinner
-                android:id="@+id/sp_roll"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#020202"
-                android:entries="@array/lista_roll" />
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="@string/registro"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
+                <EditText
+                    android:id="@+id/et_nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ovalo"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:hint="@string/nombre"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textColorHint="@android:color/darker_gray" />
+
+                <EditText
+                    android:id="@+id/et_telefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ovalo"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:hint="@string/telefono"
+                    android:inputType="number"
+                    android:textColor="@color/white"
+                    android:textColorHint="@android:color/darker_gray" />
+
+                <EditText
+                    android:id="@+id/et_correo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ovalo"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:hint="@string/Correo"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/white"
+                    android:textColorHint="@android:color/darker_gray" />
+
+                <EditText
+                    android:id="@+id/et_contrasena"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ovalo"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:hint="@string/contrasena"
+                    android:inputType="textPassword"
+                    android:textColor="@color/white"
+                    android:textColorHint="@android:color/darker_gray" />
+
+                <EditText
+                    android:id="@+id/et_contrasena2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ovalo"
+                    android:ems="10"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:hint="@string/recontra"
+                    android:inputType="textPassword"
+                    android:textColor="@color/white"
+                    android:textColorHint="@android:color/darker_gray" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="Roll"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <Spinner
+                    android:id="@+id/sp_roll"
+                    style="@android:style/Widget.Spinner.DropDown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/style_spinner3"
+                    android:entries="@array/lista_roll" />
+
+                <TextView
+                    android:id="@+id/tv_fecha_nacimiento_lb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:text="@string/fecha_nacimiento_lb"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ovalo"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-condensed-light"
+                        android:text="@string/fecha_nacimiento"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp" />
+
+                    <ImageButton
+                        android:id="@+id/ib_calendario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/cardview_shadow_end_color"
+                        app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/bt_registrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="70dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/ovalo2"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/guardar"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_resultado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
         </LinearLayout>
+    </ScrollView>
 
-        <TextView
-            android:id="@+id/tv_fecha_nacimiento_lb"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif-condensed-light"
-            android:text="@string/fecha_nacimiento_lb"
-            android:textColor="@android:color/background_dark"
-            android:textSize="18sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-condensed-light"
-                android:text="@string/fecha_nacimiento"
-                android:textColor="@android:color/background_dark"
-                android:textSize="18sp" />
-
-            <ImageButton
-                android:id="@+id/ib_calendario"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/background_dark"
-                app:srcCompat="@android:drawable/ic_menu_my_calendar" />
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/bt_registrar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/ovalo"
-            android:backgroundTint="#050505"
-            android:text="@string/guardar"
-            android:textColor="#FFFFFF" />
-
-        <TextView
-            android:id="@+id/tv_resultado"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif-condensed-light"
-            android:textColor="@android:color/background_dark"
-            android:textSize="18sp" />
-
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>

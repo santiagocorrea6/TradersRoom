@@ -4,154 +4,122 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo2"
+    android:background="@drawable/fondologin1"
     tools:context=".LoginActivity">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="122dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="76dp"
-                android:layout_marginEnd="50dp"
-                app:srcCompat="@drawable/user2" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:shadowColor="@color/black"
-                android:text="@string/inicio"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="36sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_weight="0.2"
-                    app:srcCompat="@drawable/user" />
-
-                <EditText
-                    android:id="@+id/et_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_marginRight="30dp"
-                    android:layout_weight="0.8"
-                    android:ems="10"
-                    android:gravity="center_vertical"
-                    android:hint="@string/Correo"
-                    android:inputType="textEmailAddress"
-                    android:textColor="@color/black" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="0.2"
-                    app:srcCompat="@drawable/lock" />
-
-                <EditText
-                    android:id="@+id/et_pass"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_marginRight="30dp"
-                    android:layout_weight="0.8"
-                    android:ems="10"
-                    android:hint="@string/contrasena"
-                    android:inputType="textPassword"
-                    android:textColor="@color/black" />
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/bt_ingresar"
-                android:layout_width="279dp"
-                android:layout_height="47dp"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="44dp"
-                android:layout_marginEnd="50dp"
-                android:background="@drawable/ovalo"
-                android:backgroundTint="@color/black"
-                android:text="Inicia sesión"
-                android:textColor="@color/white" />
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="50dp"
-                android:text="@string/reg" />
+                android:layout_marginTop="36dp"
+                android:fontFamily="sans-serif-condensed-light"
+                android:text="@string/reg"
+                android:textColor="@color/aliceblue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bt_ingresar" />
+
+            <Button
+                android:id="@+id/bt_ingresar"
+                android:layout_width="310dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/ovalo"
+                android:backgroundTint="@color/AmarilloUsXXI"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/iniciarsesion"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_pass" />
 
             <Button
                 android:id="@+id/bt_registro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="175dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/ovalo"
-                android:text="Regístrate" />
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/registrate"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-            <TextView
-                android:id="@+id/tv_correo2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:shadowColor="@color/white" />
+            <EditText
+                android:id="@+id/et_pass"
+                android:layout_width="310dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="28dp"
+                android:layout_weight="0.8"
+                android:background="@drawable/ovalo"
+                android:ems="10"
+                android:fontFamily="sans-serif-condensed-light"
+                android:hint="@string/contrasena"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
-        </LinearLayout>
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="310dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="80dp"
+                android:layout_weight="0.8"
+                android:background="@drawable/ovalo"
+                android:ems="10"
+                android:fontFamily="sans-serif-condensed-light"
+                android:gravity="center_vertical"
+                android:hint="@string/Correo"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/white"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="340dp"
+                android:layout_height="115dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.49"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/iloveusxxi1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
-    <TextView
-        android:id="@+id/tv_pass2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:shadowColor="@color/slategray"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:shadowColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.038"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
