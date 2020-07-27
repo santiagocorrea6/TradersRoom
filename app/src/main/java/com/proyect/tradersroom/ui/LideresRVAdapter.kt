@@ -10,8 +10,13 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.lideres_item.view.*
 
 class LideresRVAdapter (
-    var lideresList: ArrayList<LiderRemote>
+    var lideresList: ArrayList<LiderRemote>,
+    private val itemClickListener: LideresRVAdapter.OnLiderClickListener
 ) : RecyclerView.Adapter<LideresRVAdapter.LideresViewHolder>(){
+
+    interface OnLiderClickListener{
+        fun onItemClick(id: String)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LideresViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.lideres_item, parent, false)
@@ -25,19 +30,17 @@ class LideresRVAdapter (
         holder.bindLider(lider)
     }
 
-    class LideresViewHolder(
+    inner class LideresViewHolder(
         itemView: View
     ) : RecyclerView.ViewHolder(itemView){
 
         fun bindLider(lider: LiderRemote){
             itemView.tv_paridad.text = lider.nombre
             itemView.tv_fecha_nacimiento.text = lider.rango
-            //Picasso.with(context).load("http://i.imgur.com/DvpvklR.png").into(imageView);
 
-            //if (!lider.foto.isNullOrEmpty())
-                Picasso.get().load(lider.foto).into(itemView.iv_foto);
+            Picasso.get().load(lider.foto).into(itemView.iv_foto);
 
-
+            itemView.setOnClickListener { itemClickListener.onItemClick("${lider.id}") }
         }
     }
 }

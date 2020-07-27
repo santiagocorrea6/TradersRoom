@@ -1,10 +1,12 @@
 package com.proyect.tradersroom.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +14,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.proyect.tradersroom.PerfilActivity
 import com.proyect.tradersroom.R
 import com.proyect.tradersroom.model.remote.EducadorRemote
 import com.proyect.tradersroom.ui.EducadoresRVAdapter
@@ -20,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_educadores.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
-class EducadoresFragment : Fragment() {
+class EducadoresFragment : Fragment(), EducadoresRVAdapter.OnEducadorClickListener {
 
     private val educadoresList: MutableList<EducadorRemote> = mutableListOf()
     private lateinit var educadoresAdapter : EducadoresRVAdapter
@@ -46,7 +49,7 @@ class EducadoresFragment : Fragment() {
 
         rv_educadores.setHasFixedSize(true) //todos del mismo tamaño
 
-        educadoresAdapter = EducadoresRVAdapter(educadoresList as ArrayList<EducadorRemote>)
+        educadoresAdapter = EducadoresRVAdapter(educadoresList as ArrayList<EducadorRemote>, this)
         rv_educadores.adapter = educadoresAdapter
 
     }
@@ -69,5 +72,13 @@ class EducadoresFragment : Fragment() {
             }
         }
         myRef.addValueEventListener(postListener)
+    }
+
+    override fun onItemClick(id: String) {
+        /*val intent = Intent(requireContext(), PerfilActivity::class.java)
+        intent.putExtra("educadorId", id)
+        startActivity(intent)*/
+
+        Toast.makeText(requireContext(), "ID: $id", Toast.LENGTH_SHORT).show()
     }
 }

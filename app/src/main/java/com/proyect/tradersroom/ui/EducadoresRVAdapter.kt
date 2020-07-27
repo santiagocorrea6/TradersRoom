@@ -10,8 +10,13 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.educadores_item.view.*
 
 class EducadoresRVAdapter (
-    var educadoresList: ArrayList<EducadorRemote>
+    var educadoresList: ArrayList<EducadorRemote>,
+    private val itemClickListener: OnEducadorClickListener
 ) : RecyclerView.Adapter<EducadoresRVAdapter.EducadoresViewHolder>(){
+
+    interface OnEducadorClickListener{
+        fun onItemClick(id: String)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EducadoresViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.educadores_item, parent, false)
@@ -25,16 +30,19 @@ class EducadoresRVAdapter (
         holder.bindEducador(educador)
     }
 
-    class EducadoresViewHolder(
+    inner class EducadoresViewHolder(
         itemView: View
     ) : RecyclerView.ViewHolder(itemView){
 
         fun bindEducador(educador: EducadorRemote){
             itemView.tv_paridad.text = educador.nombre
             itemView.tv_fecha_nacimiento.text = educador.roll
-            //Picasso.with(context).load("http://i.imgur.com/DvpvklR.png").into(imageView);
             if (!educador.foto.isNullOrEmpty())
-                Picasso.get().load(educador.foto).into(itemView.iv_foto);
+                Picasso.get().load(educador.foto).into(itemView.iv_foto)
+
+            itemView.setOnClickListener { itemClickListener.onItemClick("${educador.id}") }
+
+
         }
     }
 }

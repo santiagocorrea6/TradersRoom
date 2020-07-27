@@ -109,4 +109,7 @@
     <string name="registraroperacion">REGISTRAR OPERACIÓN</string>
     <string name="usd">$</string>
     <string name="porcentaje">%</string>
+    <string name="capitalInicial">Capital Inicial</string>
+    <string name="capitalActual">Capital Actual</string>
+    <string name="cap">USD</string>
 </resources>

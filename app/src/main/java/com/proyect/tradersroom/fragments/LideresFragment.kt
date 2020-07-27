@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,11 +16,12 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
 import com.proyect.tradersroom.R
 import com.proyect.tradersroom.model.remote.LiderRemote
+import com.proyect.tradersroom.ui.EducadoresRVAdapter
 import com.proyect.tradersroom.ui.LideresRVAdapter
 import kotlinx.android.synthetic.main.fragment_lideres.*
 
 
-class LideresFragment : Fragment() {
+class LideresFragment : Fragment(), LideresRVAdapter.OnLiderClickListener {
 
     private val lideresList: MutableList<LiderRemote> = mutableListOf()
     private lateinit var lideresAdapter : LideresRVAdapter
@@ -45,7 +47,7 @@ class LideresFragment : Fragment() {
 
         rv_lideres.setHasFixedSize(true) //todos del mismo tamaño
 
-        lideresAdapter = LideresRVAdapter(lideresList as ArrayList<LiderRemote>)
+        lideresAdapter = LideresRVAdapter(lideresList as ArrayList<LiderRemote>, this)
         rv_lideres.adapter = lideresAdapter
 
     }
@@ -68,5 +70,13 @@ class LideresFragment : Fragment() {
             }
         }
         myRef.addValueEventListener(postListener)
+    }
+
+    override fun onItemClick(id: String) {
+        /*val intent = Intent(requireContext(), PerfilActivity::class.java)
+        intent.putExtra("educadorId", id)
+        startActivity(intent)*/
+
+        Toast.makeText(requireContext(), "ID: $id", Toast.LENGTH_SHORT).show()
     }
 }
