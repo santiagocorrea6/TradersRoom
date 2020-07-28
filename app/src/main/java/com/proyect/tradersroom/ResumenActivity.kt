@@ -1,7 +1,6 @@
 package com.proyect.tradersroom
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -15,10 +14,12 @@ import com.proyect.tradersroom.model.remote.BitacoraRemote
 import com.proyect.tradersroom.model.remote.UsuarioRemote
 import com.proyect.tradersroom.ui.BitacorasRVAdapter
 import kotlinx.android.synthetic.main.activity_resumen.*
+import kotlin.collections.ArrayList
 
 class ResumenActivity : AppCompatActivity() {
     private val bitacorasList: MutableList<BitacoraRemote> = mutableListOf()
     private lateinit var bitacorasAdapter : BitacorasRVAdapter
+
     var bitacoraId = "hola"
 
     @SuppressLint("SetTextI18n")
@@ -67,6 +68,8 @@ class ResumenActivity : AppCompatActivity() {
                         if (usuario?.correo == correo) {
 
                             borrarFila(database, usuario)
+
+                            reloadActivity()
                         }
                     }
                 }
@@ -103,7 +106,7 @@ class ResumenActivity : AppCompatActivity() {
 
                             borrarBitacora(database, usuario)
 
-                            goToHome()
+                            reloadActivity()
                         }
                     }
                 }
@@ -118,10 +121,9 @@ class ResumenActivity : AppCompatActivity() {
         builder.show()
     }
 
-    private fun goToHome() {
-        val intent = Intent(this@ResumenActivity, BottomNavigationActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
+    private fun reloadActivity() {
+        finish()
+        startActivity(getIntent())
     }
 
     private fun cargarBitacora() {
@@ -220,32 +222,23 @@ class ResumenActivity : AppCompatActivity() {
     }
 
     private fun borrarFila(database: FirebaseDatabase,usuario: UsuarioRemote?) {
-        val myRef2: DatabaseReference = database.getReference("bitacora").child("${usuario?.id}")
+        val bitacoraRef: DatabaseReference = database.getReference("bitacora").child("${usuario?.id}")
 
-        val postListener2 = object : ValueEventListener {
+        val postListenerId = object : ValueEventListener {
+
             override fun onCancelled(error: DatabaseError) {}
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val maxId = (dataSnapshot.childrenCount.toInt())
 
-                if (maxId == 1)
-                    Toast.makeText(this@ResumenActivity, "Registro Vacio", Toast.LENGTH_SHORT)
-                        .show()
+                if (maxId <= 1)
+                    Toast.makeText(this@ResumenActivity, "Registro Vacio", Toast.LENGTH_SHORT).show()
                 else {
-                    Toast.makeText(this@ResumenActivity, "Registro Eliminado", Toast.LENGTH_SHORT)
-                        .show()
-
-                    myRef2.child("$maxId").removeValue()
-
-                    finish()
-                    startActivity(getIntent())
+                    bitacoraRef.child("${maxId}").removeValue()
                 }
             }
         }
 
-        myRef2.addValueEventListener(postListener2)
+        bitacoraRef.addValueEventListener(postListenerId)
     }
-
-
-
 }

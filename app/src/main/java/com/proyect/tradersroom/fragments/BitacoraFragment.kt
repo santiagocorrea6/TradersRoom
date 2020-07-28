@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.content.Intent.getIntent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -48,7 +50,7 @@ class BitacoraFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
+        //val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
 
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
             override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
@@ -97,7 +99,7 @@ class BitacoraFragment : Fragment() {
             val buySell = sp_buySell.selectedItem.toString()
             val inversion = et_inversion.text.toString()
             val rentabilidad = et_rentabilidad.text.toString()
-            var resultado = sp_resultado.selectedItem.toString()
+            val resultado = sp_resultado.selectedItem.toString()
 
             if (inversion.isEmpty()){ //Inversion vacia
                 et_inversion.setError("Ingrese su inversion")
@@ -151,7 +153,7 @@ class BitacoraFragment : Fragment() {
         paridad: String,
         buySell: String
     ) {
-        val myRef2: DatabaseReference = database.getReference("bitacora").child("$id1")
+        val myRef2: DatabaseReference = database.getReference("bitacora").child(id1)
 
         val postListener2 = object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
@@ -215,7 +217,6 @@ class BitacoraFragment : Fragment() {
         Toast.makeText(requireContext(), "Registro almacenado correctamente", Toast.LENGTH_SHORT).show()
 
         //Limpiar campos
-        tv_fecha.setText("DD/MM/YYYY")
         et_rentabilidad.setText("")
         et_inversion.setText("")
 
@@ -248,6 +249,7 @@ class BitacoraFragment : Fragment() {
         val myRef = database.getReference("usuarios")
 
         val postListener = object : ValueEventListener {
+
             override fun onCancelled(error: DatabaseError) {
             }
 
@@ -259,7 +261,7 @@ class BitacoraFragment : Fragment() {
                     if (usuario?.correo == correo) {
                         id1 = "${usuario?.id}"
 
-                        val myRef2: DatabaseReference =  database.getReference("bitacora").child("$id1")
+                        val myRef2: DatabaseReference =  database.getReference("bitacora").child(id1)
                         val postListener2 = object : ValueEventListener {
                             override fun onCancelled(error: DatabaseError) {
                             }
@@ -277,10 +279,14 @@ class BitacoraFragment : Fragment() {
                                         if (capital_user == "0"){
                                             bt_guardar.setVisibility(View.GONE)
                                             bt_capital.setVisibility(View.VISIBLE)
+                                            //bt_capital.isClickable=true
+                                            //bt_guardar.isClickable=false
                                             Toast.makeText(requireContext(),"Ingrese el capital inicial", Toast.LENGTH_LONG).show()
                                         } else{
                                            // bt_guardar.setVisibility(View.VISIBLE)
-                                            bt_capital.setVisibility(View.GONE)
+                                            //bt_capital.setVisibility(View.GONE)
+                                            bt_capital.isClickable=false
+                                            //bt_guardar.isClickable=true
                                         }
                                     }
                                 }
@@ -300,20 +306,18 @@ class BitacoraFragment : Fragment() {
     }
 
     private fun cuadroDialogo() {
-        var ModelDialog = AlertDialog.Builder(requireContext())
+        val ModelDialog = AlertDialog.Builder(requireContext())
         val DialogVista = layoutInflater.inflate(R.layout.cuadro_dialogo, null)
         val botonCancelar = DialogVista.findViewById<Button>(R.id.bt_cancelar)
         val botonAceptar = DialogVista.findViewById<Button>(R.id.bt_aceptar)
         val capital = DialogVista.findViewById<EditText>(R.id.et_capital)
         ModelDialog.setView(DialogVista)
-        var DialogoPersonalizado = ModelDialog.create()
+        val DialogoPersonalizado = ModelDialog.create()
         DialogoPersonalizado.show()
 
         botonCancelar.setOnClickListener {
             DialogoPersonalizado.dismiss()
         }
-
-
 
         botonAceptar.setOnClickListener {
             val correo = consultarCorreo()
@@ -337,7 +341,7 @@ class BitacoraFragment : Fragment() {
                                 capital.requestFocus()
                                 Toast.makeText(requireContext(), "Ingrese el capital inicial", Toast.LENGTH_SHORT).show()
                             } else {
-                                val myRef2: DatabaseReference =  database.getReference("bitacora").child("$id1")
+                                val myRef2: DatabaseReference =  database.getReference("bitacora").child(id1)
                                 myRef2.child("0").child("capitalInicial").setValue("${capital.text}")
                                 Toast.makeText(requireContext(), "Guardado", Toast.LENGTH_SHORT).show()
                             }
@@ -347,9 +351,21 @@ class BitacoraFragment : Fragment() {
             }
             myRef.addValueEventListener(postListener)
 
-            val ft: FragmentTransaction = requireFragmentManager().beginTransaction()
-            ft.detach(this).attach(this).commit()
-            DialogoPersonalizado.dismiss()
+            val intent = Intent(requireContext(), BottomNavigationActivity::class.java)
+            startActivity(intent)
+
+            //val ft: FragmentTransaction = requireFragmentManager().beginTransaction()
+            //ft.detach(this).attach(this).commit()
+           //DialogoPersonalizado.dismiss()
+
+            //intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            //findNavController().navigate(R.id.action_nav_bitacora_self)
+
+            //finish()
+            //startActivity(getIntent())
+
+
+
         }
     }
 }

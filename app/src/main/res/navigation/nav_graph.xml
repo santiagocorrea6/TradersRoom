@@ -42,16 +42,7 @@
             android:id="@+id/action_BitacoraFragment_to_HomeFragment"
             app:destination="@id/nav_home" />
         <action
-            android:id="@+id/action_nav_bitacora_to_resumenFragment"
-            app:destination="@id/resumenFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/resumenFragment"
-        android:name="com.proyect.tradersroom.fragments.ResumenFragment"
-        android:label="Resumen bitácora"
-        tools:layout="@layout/fragment_resumen" >
-        <action
-            android:id="@+id/action_resumenFragment_to_nav_bitacora"
+            android:id="@+id/action_nav_bitacora_self"
             app:destination="@id/nav_bitacora" />
     </fragment>
 </navigation>
