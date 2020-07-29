@@ -22,9 +22,6 @@ class EducadoresPerfilFragment : AppCompatActivity() {
         setContentView(R.layout.fragment_personas)
 
         val persona = intent.getSerializableExtra("personaId")
-        val database = intent.getSerializableExtra("database")
-
-        Toast.makeText(this, "DATABASE: $database", Toast.LENGTH_SHORT).show()
 
         ocultarEditText()
 
@@ -54,19 +51,39 @@ class EducadoresPerfilFragment : AppCompatActivity() {
     }
 
     private fun mostrarEditText() {
-        linearLayout3.visibility = View.VISIBLE
+        et_nombre.visibility = View.VISIBLE
+        et_roll.visibility = View.VISIBLE
+        et_habilidades.visibility = View.VISIBLE
+        et_profesion.visibility = View.VISIBLE
+        et_ciudad.visibility = View.VISIBLE
+        et_descripcion.visibility = View.VISIBLE
+
         bt_saveChanges.visibility = View.VISIBLE
     }
 
     private fun ocultarEditText() {
-        linearLayout3.visibility = View.GONE
         bt_saveChanges.visibility = View.GONE
+
+        et_nombre.visibility = View.GONE
+        et_roll.visibility = View.GONE
+        et_habilidades.visibility = View.GONE
+        et_profesion.visibility = View.GONE
+        et_ciudad.visibility = View.GONE
+        et_descripcion.visibility = View.GONE
     }
 
     private fun ocultarTextView() {
-        linearLayout2.visibility = View.GONE
         bt_config.visibility = View.GONE
-        circularImageView.visibility = View.GONE
+        textView4.visibility = View.GONE
+        divider.visibility = View.GONE
+        divider2.visibility = View.GONE
+
+        tv_nombre.visibility = View.GONE
+        tv_roll.visibility = View.GONE
+        tv_habilidades.visibility = View.GONE
+        tv_profesion.visibility = View.GONE
+        tv_ciudad.visibility = View.GONE
+        tv_descripcion.visibility = View.GONE
     }
 
     private fun consultarCorreo(): String? {

@@ -199,7 +199,7 @@ class EditarPerfilActivity : AppCompatActivity() {
             else -> {
                 myRef.child(idUsuario!!).updateChildren(childUpdate)
                 goToPerfil()
-                Toast.makeText(this, "Informaciòn Actualizada", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Información Actualizada", Toast.LENGTH_SHORT).show()
             }
         }
     }

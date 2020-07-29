@@ -76,7 +76,6 @@ class LideresFragment : Fragment(), LideresRVAdapter.OnLiderClickListener {
     override fun onItemClick(id: String) {
         val intent = Intent(requireContext(), EducadoresPerfilFragment::class.java)
         intent.putExtra("personaId", id)
-        intent.putExtra("database", "lideres")
         startActivity(intent)
     }
 }
