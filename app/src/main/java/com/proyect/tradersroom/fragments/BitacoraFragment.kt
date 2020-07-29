@@ -16,7 +16,6 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import com.proyect.tradersroom.BottomNavigationActivity
 import com.proyect.tradersroom.R
 import com.proyect.tradersroom.ResumenActivity
 import com.proyect.tradersroom.model.remote.BitacoraRemote
@@ -34,12 +33,21 @@ class BitacoraFragment : Fragment() {
     private lateinit var capital_user: String               //Capital del usuario
     private var cal = Calendar.getInstance()
 
+    //private var root: View? = null
+    var oculto = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_bitacora, container, false)
+        /*root = inflater.inflate(R.layout.fragment_bitacora, container, false)
+
+            root?.let {
+                bt_capital.visibility = View.GONE
+            }
+
+        return root*/
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -79,13 +87,13 @@ class BitacoraFragment : Fragment() {
 
         //Ingresar capital inicial
         bt_capital.setOnClickListener {
-            cuadroDialogo()
+            if (oculto == false)
+                cuadroDialogo()
         }
 
         //Inicializaciones
         capital_user = "0"
         rula()
-        bt_capital.isClickable=true
 
         //Guardar en bitacora
         bt_guardar.setOnClickListener {
@@ -271,14 +279,18 @@ class BitacoraFragment : Fragment() {
 
                                         if (capital_user == "0"){
                                             bt_guardar.setVisibility(View.GONE)
-                                            bt_capital.setVisibility(View.VISIBLE)
+                                            //bt_capital.setVisibility(View.VISIBLE)
+                                            bt_capital.show()
                                             //bt_capital.isClickable=true
                                             //bt_guardar.isClickable=false
                                             Toast.makeText(requireContext(),"Ingrese el capital inicial", Toast.LENGTH_LONG).show()
                                         } else{
                                            // bt_guardar.setVisibility(View.VISIBLE)
                                             //bt_capital.setVisibility(View.GONE)
-                                            bt_capital.isClickable=false
+                                            //bt_capital.isClickable=false
+                                            //bt_capital.visibility = View.GONE
+                                            //bt_capital.hide()
+                                            oculto = true
                                             //bt_capital.visibility = View.GONE
                                             //bt_guardar.isClickable=true
                                         }
@@ -337,7 +349,7 @@ class BitacoraFragment : Fragment() {
                             } else {
                                 val myRef2: DatabaseReference =  database.getReference("bitacora").child(id1)
                                 myRef2.child("0").child("capitalInicial").setValue("${capital.text}")
-                                Toast.makeText(requireContext(), "Guardado", Toast.LENGTH_SHORT).show()
+                                //Toast.makeText(requireContext(), "Guardado", Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
@@ -345,21 +357,9 @@ class BitacoraFragment : Fragment() {
             }
             myRef.addValueEventListener(postListener)
 
-            val intent = Intent(requireContext(), BottomNavigationActivity::class.java)
-            startActivity(intent)
-
-            //val ft: FragmentTransaction = requireFragmentManager().beginTransaction()
-            //ft.detach(this).attach(this).commit()
-           //DialogoPersonalizado.dismiss()
-
-            //intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            //findNavController().navigate(R.id.action_nav_bitacora_self)
-
-            //finish()
-            //startActivity(getIntent())
-
-
-
+            DialogoPersonalizado.dismiss()
+            //val intent = Intent(requireContext(), BottomNavigationActivity::class.java)
+            //startActivity(intent)
         }
     }
 }

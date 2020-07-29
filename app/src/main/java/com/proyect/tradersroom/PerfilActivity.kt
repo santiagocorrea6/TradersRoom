@@ -1,5 +1,6 @@
 package com.proyect.tradersroom
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
@@ -30,6 +31,27 @@ class PerfilActivity : AppCompatActivity() {
 
         val correo = consultarCorreo()
         buscarEnFirebase(correo)
+
+        ib_config.setOnClickListener {
+            goToEditar()
+        }
+
+        bt_cerrar.setOnClickListener {
+            goToLogin()
+        }
+    }
+
+    private fun goToLogin() {
+        FirebaseAuth.getInstance().signOut()
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+    }
+
+    private fun goToEditar() {
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        val intent = Intent(this, EditarPerfilActivity::class.java)
+        startActivity(intent)
     }
 
     private fun consultarCorreo(): String? {

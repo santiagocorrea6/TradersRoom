@@ -3,8 +3,6 @@ package com.proyect.tradersroom
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
-import android.icu.number.NumberFormatter.with
-import android.icu.number.NumberRangeFormatter.with
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
@@ -16,7 +14,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.proyect.tradersroom.model.remote.UsuarioRemote
 import com.squareup.picasso.Picasso
@@ -24,7 +21,6 @@ import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import id.zelory.compressor.Compressor
 import kotlinx.android.synthetic.main.activity_editar_perfil.*
-import kotlinx.android.synthetic.main.activity_perfil.iv_perfil
 import java.io.ByteArrayOutputStream
 import java.io.File
 
@@ -57,7 +53,7 @@ class EditarPerfilActivity : AppCompatActivity() {
         val imgRef = storage.reference.child("usuarios").child(idUsuario.toString())
 
         if (requestCode == CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE && resultCode == Activity.RESULT_OK){
-            var imageuri = CropImage.getPickImageResultUri(this, data)
+            val imageuri = CropImage.getPickImageResultUri(this, data)
 
             //Recortar imagen
             CropImage.activity(imageuri)
@@ -67,10 +63,10 @@ class EditarPerfilActivity : AppCompatActivity() {
         }
 
         if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
-            var result = CropImage.getActivityResult(data)
+            val result = CropImage.getActivityResult(data)
 
             if (resultCode == Activity.RESULT_OK){
-                var resultUri = result.uri
+                val resultUri = result.uri
                 val url = File(resultUri.path)
 
                 Picasso.get().load(url).into(ib_foto)
@@ -81,7 +77,7 @@ class EditarPerfilActivity : AppCompatActivity() {
                     .setQuality(100)
                     .compressToBitmap(url)
 
-                var byteArrayOutputStream = ByteArrayOutputStream()
+                val byteArrayOutputStream = ByteArrayOutputStream()
                 thumb_bitmap.compress(Bitmap.CompressFormat.JPEG, 90, byteArrayOutputStream)
 
                 val thumb_byte: ByteArray = byteArrayOutputStream.toByteArray()
@@ -92,7 +88,7 @@ class EditarPerfilActivity : AppCompatActivity() {
 
                 builder.setPositiveButton(android.R.string.yes) { dialog, which ->
 
-                    var uploadTask = imgRef.putBytes(thumb_byte)
+                    val uploadTask = imgRef.putBytes(thumb_byte)
 
                     val uriTask =
                         uploadTask.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
@@ -203,7 +199,7 @@ class EditarPerfilActivity : AppCompatActivity() {
             else -> {
                 myRef.child(idUsuario!!).updateChildren(childUpdate)
                 goToPerfil()
-                Toast.makeText(this, "Informaciòn Actualizada", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Información Actualizada", Toast.LENGTH_SHORT).show()
             }
         }
     }

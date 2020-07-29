@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".fragments.EducadoresPerfilFragment"></activity>
+        <activity android:name=".fragments.LideresPerfilFragment"></activity>
+        <activity android:name=".fragments.EducadoresPerfilFragment" />
         <activity android:name=".EditarPerfilActivity" />
         <activity android:name=".ResumenActivity" />
         <activity android:name=".PerfilActivity" />

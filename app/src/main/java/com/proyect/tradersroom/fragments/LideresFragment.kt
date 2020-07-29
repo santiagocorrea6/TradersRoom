@@ -1,5 +1,6 @@
 package com.proyect.tradersroom.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -73,10 +74,8 @@ class LideresFragment : Fragment(), LideresRVAdapter.OnLiderClickListener {
     }
 
     override fun onItemClick(id: String) {
-        /*val intent = Intent(requireContext(), PerfilActivity::class.java)
-        intent.putExtra("educadorId", id)
-        startActivity(intent)*/
-
-        Toast.makeText(requireContext(), "ID: $id", Toast.LENGTH_SHORT).show()
+        val intent = Intent(requireContext(), LideresPerfilFragment::class.java)
+        intent.putExtra("personaId", id)
+        startActivity(intent)
     }
 }
