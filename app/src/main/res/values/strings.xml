@@ -113,4 +113,5 @@
     <string name="capitalActual">Capital Actual</string>
     <string name="cap">USD</string>
     <string name="cerrarsesion">Cerrar sesión</string>
+    <string name="descripcion">Descripción</string>
 </resources>
