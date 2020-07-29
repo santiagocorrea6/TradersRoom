@@ -5,6 +5,10 @@
         android:id="@+id/menu_actividad"
         android:title="Perfil"/>
     <item
+        android:id="@+id/menu_actividad3"
+        android:title="Editar Perfil"/>
+    <item
         android:id="@+id/menu_actividad2"
         android:title="Cerrar Sesion"/>
+
 </menu>

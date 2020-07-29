@@ -20,6 +20,7 @@ class ResumenActivity : AppCompatActivity() {
     private val bitacorasList: MutableList<BitacoraRemote> = mutableListOf()
     private lateinit var bitacorasAdapter : BitacorasRVAdapter
 
+    var maxId : Int = 0
     var bitacoraId = "hola"
 
     @SuppressLint("SetTextI18n")
@@ -229,16 +230,18 @@ class ResumenActivity : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {}
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val maxId = (dataSnapshot.childrenCount.toInt())
-
-                if (maxId <= 1)
-                    Toast.makeText(this@ResumenActivity, "Registro Vacio", Toast.LENGTH_SHORT).show()
-                else {
-                    bitacoraRef.child("${maxId}").removeValue()
-                }
+                maxId = (dataSnapshot.childrenCount.toInt())
             }
         }
 
         bitacoraRef.addValueEventListener(postListenerId)
+
+        Toast.makeText(this, "MAX: $maxId", Toast.LENGTH_SHORT).show()
+
+        if (maxId <= 1)
+            Toast.makeText(this@ResumenActivity, "Registro Vacio", Toast.LENGTH_SHORT).show()
+        else {
+            bitacoraRef.child("${maxId}").removeValue()
+        }
     }
 }
