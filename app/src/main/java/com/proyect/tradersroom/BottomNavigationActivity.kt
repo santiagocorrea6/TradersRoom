@@ -54,6 +54,12 @@ class BottomNavigationActivity : AppCompatActivity() {
             val intent = Intent(this, PerfilActivity::class.java)
             startActivity(intent)
         }
+
+        if (item.itemId == R.id.menu_actividad3){
+            //findNavController().navigate(R.id.action_perfilFragment)
+            val intent = Intent(this, EditarPerfilActivity::class.java)
+            startActivity(intent)
+        }
         return super.onOptionsItemSelected(item)
     }
 }

@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Intent
-import android.content.Intent.getIntent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,8 +13,6 @@ import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -24,10 +21,7 @@ import com.proyect.tradersroom.R
 import com.proyect.tradersroom.ResumenActivity
 import com.proyect.tradersroom.model.remote.BitacoraRemote
 import com.proyect.tradersroom.model.remote.UsuarioRemote
-import kotlinx.android.synthetic.main.cuadro_dialogo.*
 import kotlinx.android.synthetic.main.fragment_bitacora.*
-import java.math.BigDecimal
-import java.math.RoundingMode
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -61,7 +55,7 @@ class BitacoraFragment : Fragment() {
                 val format = "MM/dd/yyyy"
                 val simpleDateFormat = SimpleDateFormat(format, Locale.US)
                 fecha = simpleDateFormat.format(cal.time).toString()
-                tv_fecha.text = fecha
+                et_fecha.text = fecha
             }
         }
 
@@ -94,7 +88,7 @@ class BitacoraFragment : Fragment() {
 
         //Guardar en bitacora
         bt_guardar.setOnClickListener {
-            val fecha = tv_fecha.text.toString()
+            val fecha = et_fecha.text.toString()
             val paridad = sp_divisa.selectedItem.toString()
             val buySell = sp_buySell.selectedItem.toString()
             val inversion = et_inversion.text.toString()
@@ -111,7 +105,7 @@ class BitacoraFragment : Fragment() {
                 et_rentabilidad.setError("No puede ser mayor a 100%")
                 et_rentabilidad.requestFocus()
             } else if (fecha == "MM/DD/AAAA") { //Fecha incorrecta
-                tv_fecha.error = "Por favor ingrese la fecha"
+                et_fecha.error = "Por favor ingrese la fecha"
                 Toast.makeText(requireContext(), "Ingrese una fecha valida", Toast.LENGTH_SHORT).show()
             } else {
 
@@ -221,7 +215,7 @@ class BitacoraFragment : Fragment() {
         et_inversion.setText("")
 
         //Quitar Errores
-        tv_fecha.setError(null)
+        et_fecha.setError(null)
         et_rentabilidad.setError(null)
         et_rentabilidad.setError(null)
     }
@@ -286,6 +280,7 @@ class BitacoraFragment : Fragment() {
                                            // bt_guardar.setVisibility(View.VISIBLE)
                                             //bt_capital.setVisibility(View.GONE)
                                             bt_capital.isClickable=false
+                                            //bt_capital.visibility = View.GONE
                                             //bt_guardar.isClickable=true
                                         }
                                     }
