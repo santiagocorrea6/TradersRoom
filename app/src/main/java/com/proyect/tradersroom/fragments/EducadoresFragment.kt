@@ -6,21 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.proyect.tradersroom.PerfilActivity
 import com.proyect.tradersroom.R
 import com.proyect.tradersroom.model.remote.EducadorRemote
 import com.proyect.tradersroom.ui.EducadoresRVAdapter
-import kotlinx.android.synthetic.main.educadores_item.*
 import kotlinx.android.synthetic.main.fragment_educadores.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class EducadoresFragment : Fragment(), EducadoresRVAdapter.OnEducadorClickListener {
@@ -75,10 +70,10 @@ class EducadoresFragment : Fragment(), EducadoresRVAdapter.OnEducadorClickListen
     }
 
     override fun onItemClick(id: String) {
-        /*val intent = Intent(requireContext(), PerfilActivity::class.java)
-        intent.putExtra("educadorId", id)
-        startActivity(intent)*/
+        val intent = Intent(requireContext(), EducadoresPerfilFragment::class.java)
+        intent.putExtra("personaId", id)
+        startActivity(intent)
 
-        Toast.makeText(requireContext(), "ID: $id", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(requireContext(), "ID: $id", Toast.LENGTH_SHORT).show()
     }
 }

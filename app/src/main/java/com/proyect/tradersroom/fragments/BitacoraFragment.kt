@@ -85,6 +85,7 @@ class BitacoraFragment : Fragment() {
         //Inicializaciones
         capital_user = "0"
         rula()
+        bt_capital.isClickable=true
 
         //Guardar en bitacora
         bt_guardar.setOnClickListener {
@@ -225,13 +226,11 @@ class BitacoraFragment : Fragment() {
         if (resultado == "Ganada") {
             val a = inversion.toFloat()
             val b = rentabilidad.toFloat() / 100
-            //ganancia1 = ((a * b).toString())
             val valor = (a * b)
             ganancia1 = (Math.round(valor * 10.0) / 10.0).toString()
         } else {
             val valor = (-1 * inversion.toInt())
             ganancia1 = (Math.round(valor * 10.0) / 10.0).toString()
-           // ganancia1 = (-1 * inversion.toInt()).toString()
         }
         return ganancia1
     }
