@@ -16,7 +16,6 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import com.proyect.tradersroom.BottomNavigationActivity
 import com.proyect.tradersroom.R
 import com.proyect.tradersroom.ResumenActivity
 import com.proyect.tradersroom.model.remote.BitacoraRemote

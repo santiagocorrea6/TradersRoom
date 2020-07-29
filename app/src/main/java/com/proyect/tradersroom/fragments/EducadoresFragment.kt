@@ -72,6 +72,7 @@ class EducadoresFragment : Fragment(), EducadoresRVAdapter.OnEducadorClickListen
     override fun onItemClick(id: String) {
         val intent = Intent(requireContext(), EducadoresPerfilFragment::class.java)
         intent.putExtra("personaId", id)
+        intent.putExtra("database", "educadores")
         startActivity(intent)
 
         //Toast.makeText(requireContext(), "ID: $id", Toast.LENGTH_SHORT).show()
