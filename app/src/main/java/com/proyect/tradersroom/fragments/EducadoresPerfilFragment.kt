@@ -22,7 +22,7 @@ class EducadoresPerfilFragment : AppCompatActivity() {
 
         val persona = intent.getSerializableExtra("personaId")
 
-        Toast.makeText(this, "${persona}", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "${persona}", Toast.LENGTH_SHORT).show()
 
         buscarEnFirebase(persona.toString())
 
