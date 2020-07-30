@@ -9,5 +9,8 @@ class LiderRemote  (
     val descripcion: String = "",
     val roll: String = "",
     val foto: String = "",
-    val foto2: String = ""
+    val foto2: String = "",
+    val face: String = "",
+    val insta: String = "",
+    val wpp: String = ""
 )

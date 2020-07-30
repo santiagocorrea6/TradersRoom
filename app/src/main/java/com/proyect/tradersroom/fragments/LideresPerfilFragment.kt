@@ -1,12 +1,15 @@
 package com.proyect.tradersroom.fragments
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.graphics.text.LineBreaker
+import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -15,6 +18,7 @@ import com.proyect.tradersroom.R
 import com.proyect.tradersroom.model.remote.LiderRemote
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_lideres_perfil.*
+
 
 class LideresPerfilFragment : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -123,6 +127,21 @@ class LideresPerfilFragment : AppCompatActivity() {
                         Picasso.get().load(lider?.foto2).into(iv_fondo)
                         Picasso.get().load(lider?.foto).into(circularImageView)
 
+                        bt_facebook.setOnClickListener {
+                            val urlPage = lider?.face.toString()
+                            goToPage(urlPage)
+                        }
+
+                        bt_instagram.setOnClickListener {
+                            val urlPage = lider?.insta.toString()
+                            goToInstagram(urlPage)
+                        }
+
+                        bt_wpp.setOnClickListener {
+                            val urlPage = lider?.wpp.toString()
+                            goToPage(urlPage)
+                        }
+
                         bt_config2.setOnClickListener {
                             ocultarTextView()
                             mostrarEditText()
@@ -138,6 +157,23 @@ class LideresPerfilFragment : AppCompatActivity() {
         }
 
         myRef.addValueEventListener(postListener)
+    }
+
+    private fun goToInstagram(urlPage: String) {
+        val uri = Uri.parse("http://instagram.com/_u/$urlPage")
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        intent.setPackage("com.instagram.android")
+
+        try {
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            //No encontró la aplicación, abre la versión web.
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://instagram.com/$urlPage")))
+        }
+    }
+
+    private fun goToPage(urlPage: String) {
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)))
     }
 
     private fun cargarDatosEditText(lider: LiderRemote?) {
