@@ -58,9 +58,9 @@
 
             <com.mikhaellopez.circularimageview.CircularImageView
                 android:id="@+id/circularImageView"
-                android:layout_width="172dp"
-                android:layout_height="176dp"
-                android:layout_marginTop="164dp"
+                android:layout_width="159dp"
+                android:layout_height="167dp"
+                android:layout_marginTop="172dp"
                 android:src="@drawable/toro"
                 app:civ_border_color="@color/black"
                 app:civ_border_width="4dp"
@@ -68,7 +68,6 @@
                 app:civ_shadow_color="@color/AmarilloUsXXI"
                 app:civ_shadow_radius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,7 +80,7 @@
                 android:gravity="center|center_vertical"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="TextView"
+                android:text="@string/bienvenido"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -115,7 +114,7 @@
                 android:gravity="center|center_vertical"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="TextView"
+                android:text="@string/bienvenido"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -168,7 +167,7 @@
                         android:fontFamily="sans-serif-condensed"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="TextView"
+                        android:text="@string/bienvenido"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
@@ -207,7 +206,7 @@
                         android:fontFamily="sans-serif-condensed"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="TextView"
+                        android:text="@string/bienvenido"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
@@ -245,7 +244,7 @@
                         android:fontFamily="sans-serif-condensed"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="TextView"
+                        android:text="@string/bienvenido"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
@@ -272,7 +271,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="20dp"
-                android:text="TextView"
+                android:text="@string/bienvenido"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

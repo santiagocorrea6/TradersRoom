@@ -9,5 +9,6 @@ class EducadorRemote (
     val descripcion: String = "",
     val horarios: String = "",
     val roll: String = "",
-    val foto: String = ""
+    val foto: String = "",
+    val foto2: String = ""
 )

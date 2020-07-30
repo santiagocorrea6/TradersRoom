@@ -19,15 +19,7 @@ class PerfilActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil)
 
-        val circularImageView = findViewById<CircularImageView>(R.id.iv_perfil)
-        circularImageView.apply {
-            circleColorDirection = CircularImageView.GradientDirection.TOP_TO_BOTTOM
-            borderWidth = 10f
-            borderColorDirection = CircularImageView.GradientDirection.TOP_TO_BOTTOM
-            shadowEnable = true
-            shadowRadius = 7f
-            shadowGravity = CircularImageView.ShadowGravity.CENTER
-        }
+        imagenCircular()
 
         val correo = consultarCorreo()
         buscarEnFirebase(correo)
@@ -38,6 +30,18 @@ class PerfilActivity : AppCompatActivity() {
 
         bt_cerrar.setOnClickListener {
             goToLogin()
+        }
+    }
+
+    private fun imagenCircular() {
+        val circularImageView = findViewById<CircularImageView>(R.id.iv_perfil)
+        circularImageView.apply {
+            circleColorDirection = CircularImageView.GradientDirection.TOP_TO_BOTTOM
+            borderWidth = 10f
+            borderColorDirection = CircularImageView.GradientDirection.TOP_TO_BOTTOM
+            shadowEnable = true
+            shadowRadius = 7f
+            shadowGravity = CircularImageView.ShadowGravity.CENTER
         }
     }
 

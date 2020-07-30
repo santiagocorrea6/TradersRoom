@@ -1,9 +1,12 @@
 package com.proyect.tradersroom.fragments
 
 //https://github.com/lopspower/CircularImageView
+import android.graphics.text.LineBreaker.JUSTIFICATION_MODE_INTER_WORD
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -107,6 +110,7 @@ class EducadoresPerfilFragment : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
             }
 
+            @RequiresApi(Build.VERSION_CODES.O)
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(datasnapshot: DataSnapshot in snapshot.children){
                     val educador = datasnapshot.getValue(EducadorRemote::class.java)
@@ -117,8 +121,11 @@ class EducadoresPerfilFragment : AppCompatActivity() {
                         tv_habilidades.setText(educador?.habilidades)
                         tv_profesion.setText(educador?.profesion)
                         tv_ciudad.setText(educador?.ciudad)
+                        tv_descripcion.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD)
                         tv_descripcion.setText(educador?.descripcion)
                         Picasso.get().load(educador?.foto).into(circularImageView)
+                        Picasso.get().load(educador?.foto2).into(iv_fondo)
+
 
                         bt_config.setOnClickListener {
                             ocultarTextView()
