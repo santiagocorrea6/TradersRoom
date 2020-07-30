@@ -10,5 +10,8 @@ class EducadorRemote (
     val horarios: String = "",
     val roll: String = "",
     val foto: String = "",
-    val foto2: String = ""
+    val foto2: String = "",
+    val dia: String = "1",
+    val dias: String = "Lunes",
+    val hora : String = "18"
 )
