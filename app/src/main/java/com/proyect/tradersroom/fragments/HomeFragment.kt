@@ -34,6 +34,18 @@ class HomeFragment : Fragment() {
         val user: FirebaseUser? = mAuth.currentUser
         val correo = user?.email
 
+        bt_educadores.setOnClickListener {
+            findNavController().navigate(R.id.action_HomeFragment_to_EducadoresFragment)
+        }
+
+        bt_lideres.setOnClickListener {
+            findNavController().navigate(R.id.action_HomeFragment_to_LideresFragment)
+        }
+
+        bt_bitacora.setOnClickListener {
+            findNavController().navigate(R.id.action_HomeFragment_to_BitacoraFragment)
+        }
+
     //    Toast.makeText(requireContext(), "Bienvenido $correo", Toast.LENGTH_SHORT).show()
 
         //buscarEnFirebase(correo)

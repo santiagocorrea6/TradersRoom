@@ -80,7 +80,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <Button
-                        android:id="@+id/button"
+                        android:id="@+id/bt_educadores"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="540dp"
@@ -117,7 +117,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <Button
-                        android:id="@+id/button2"
+                        android:id="@+id/bt_lideres"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="580dp"
@@ -152,7 +152,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <Button
-                        android:id="@+id/button3"
+                        android:id="@+id/bt_bitacora"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="590dp"
