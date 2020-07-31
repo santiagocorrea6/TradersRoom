@@ -53,7 +53,7 @@ class PerfilActivity : AppCompatActivity() {
     }
 
     private fun goToEditar() {
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        finish()
         val intent = Intent(this, EditarPerfilActivity::class.java)
         startActivity(intent)
     }

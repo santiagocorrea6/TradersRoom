@@ -133,7 +133,7 @@
                     android:background="@drawable/rectangulo"
                     android:fontFamily="sans-serif-condensed"
                     android:paddingLeft="20dp"
-                    android:text="guardar"
+                    android:text="@string/guardar"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />

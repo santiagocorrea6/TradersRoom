@@ -41,7 +41,17 @@
         <item>EURUSD</item>
         <item>GBPJPY</item>
         <item>USDCAD</item>
+        <item>EURGBP</item>
         <item>GBPUSD</item>
+        <item>USDJPY</item>
+        <item>AUDUSD</item>
+        <item>USDCHF</item>
+        <item>NZDUSD</item>
+        <item>GBPJPY</item>
+        <item>AUDCHF</item>
+        <item>CADJPY</item>
+        <item>EURNZD</item>
+        <item>NZDCHF</item>
     </string-array>
 
     <string-array name="lista_buy">
@@ -119,4 +129,10 @@
     <string name="cel">"Teléfono: "</string>
     <string name="educadores">Educadores</string>
     <string name="homebitacora">Bitácora</string>
+    <string name="plan">PLAN DE TRADING</string>
+    <string name="eliminarFila">Eliminar Fila</string>
+    <string name="limpiarTabla">Limpiar Tabla</string>
+    <string name="textview">TextView</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="aceptar">Aceptar</string>
 </resources>

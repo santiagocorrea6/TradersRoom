@@ -52,7 +52,6 @@
                     android:fontFamily="sans-serif-condensed"
                     android:paddingLeft="15dp"
                     android:paddingRight="10dp"
-                    android:text="hola"
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -76,7 +75,6 @@
                 android:fontFamily="sans-serif-condensed-light"
                 android:paddingLeft="15dp"
                 android:paddingRight="10dp"
-                android:text="hola"
                 android:textColor="@color/white" />
 
                 <EditText
@@ -111,7 +109,6 @@
                         android:fontFamily="sans-serif-condensed"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="hola"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
@@ -151,7 +148,6 @@
                         android:fontFamily="sans-serif-condensed"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="hola"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
@@ -189,7 +185,6 @@
                         android:fontFamily="sans-serif-condensed"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:text="hola"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
@@ -221,7 +216,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_weight="1"
-                        android:background="@color/white" />
+                        android:background="@color/white"
+                        tools:ignore="NestedWeights" />
 
                     <TextView
                         android:id="@+id/tv_label_descripcion"
@@ -255,7 +251,6 @@
                         android:paddingTop="5dp"
                         android:paddingRight="10dp"
                         android:paddingBottom="5dp"
-                        android:text="hola"
                         android:textColor="@color/white" />
 
                     <EditText
@@ -317,10 +312,10 @@
 
             <ImageButton
                 android:id="@+id/bt_facebook"
-                android:layout_width="27dp"
-                android:layout_height="27dp"
-                android:layout_marginTop="341dp"
-                android:layout_marginEnd="40dp"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="342dp"
+                android:layout_marginEnd="50dp"
                 android:background="@drawable/facebook"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.89"
@@ -329,10 +324,10 @@
 
             <ImageButton
                 android:id="@+id/bt_wpp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="338dp"
-                android:layout_marginEnd="110dp"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="341dp"
+                android:layout_marginEnd="102dp"
                 android:background="@drawable/whatsapp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.89"
@@ -341,9 +336,9 @@
 
             <ImageButton
                 android:id="@+id/bt_instagram"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="339dp"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="341dp"
                 android:layout_marginEnd="75dp"
                 android:background="@drawable/instagram"
                 app:layout_constraintEnd_toEndOf="parent"

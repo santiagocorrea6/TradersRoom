@@ -16,7 +16,7 @@
         android:gravity="center_horizontal|center_vertical"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:text="PLAN DE TRADING"
+        android:text="@string/plan"
         android:textColor="@color/black"
         android:textSize="36sp" />
 
@@ -123,8 +123,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
-                    android:background="@color/AmarilloUsXXI"
-                    android:text="Eliminar Fila"
+                    android:background="@drawable/rectangulo"
+                    android:backgroundTint="@color/AmarilloUsXXI"
+                    android:paddingLeft="22dp"
+                    android:text="@string/eliminarFila"
+                    android:textAlignment="center"
                     android:textColor="@color/black" />
 
                 <Button
@@ -133,8 +136,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
-                    android:background="@color/dimgray"
-                    android:text="Limpiar Tabla"
+                    android:background="@drawable/rectangulo"
+                    android:backgroundTint="@color/dimgray"
+                    android:paddingLeft="22dp"
+                    android:text="@string/limpiarTabla"
+                    android:textAlignment="center"
                     android:textColor="@color/white" />
             </LinearLayout>
 

@@ -107,7 +107,8 @@
                             android:layout_marginRight="3sp"
                             android:layout_weight="1"
                             android:background="@drawable/style_spinner4"
-                            android:entries="@array/lista_paridad" />
+                            android:entries="@array/lista_paridad"
+                            android:popupBackground="@color/Gris" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -134,7 +135,8 @@
                             android:layout_marginRight="3sp"
                             android:layout_weight="1"
                             android:background="@drawable/style_spinner4"
-                            android:entries="@array/lista_buy" />
+                            android:entries="@array/lista_buy"
+                            android:popupBackground="@color/Gris" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -217,7 +219,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/style_spinner4"
-                            android:entries="@array/lista_resultado" />
+                            android:entries="@array/lista_resultado"
+                            android:popupBackground="@color/Gris" />
                     </LinearLayout>
 
                 </LinearLayout>

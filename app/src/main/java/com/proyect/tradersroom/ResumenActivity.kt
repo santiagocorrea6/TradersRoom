@@ -1,10 +1,11 @@
 package com.proyect.tradersroom
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -14,7 +15,7 @@ import com.proyect.tradersroom.model.remote.BitacoraRemote
 import com.proyect.tradersroom.model.remote.UsuarioRemote
 import com.proyect.tradersroom.ui.BitacorasRVAdapter
 import kotlinx.android.synthetic.main.activity_resumen.*
-import kotlin.collections.ArrayList
+
 
 class ResumenActivity : AppCompatActivity() {
     private val bitacorasList: MutableList<BitacoraRemote> = mutableListOf()
@@ -69,8 +70,6 @@ class ResumenActivity : AppCompatActivity() {
                         if (usuario?.correo == correo) {
 
                             borrarFila(database, usuario)
-
-                            reloadActivity()
                         }
                     }
                 }
@@ -236,12 +235,18 @@ class ResumenActivity : AppCompatActivity() {
 
         bitacoraRef.addValueEventListener(postListenerId)
 
-        Toast.makeText(this, "MAX: $maxId", Toast.LENGTH_SHORT).show()
+        object : CountDownTimer(200, 1000) {
+            override fun onFinish() {
 
-        if (maxId <= 1)
-            Toast.makeText(this@ResumenActivity, "Registro Vacio", Toast.LENGTH_SHORT).show()
-        else {
-            bitacoraRef.child("${maxId}").removeValue()
-        }
+                if (maxId <= 1)
+                    Toast.makeText(this@ResumenActivity, "Registro Vacio", Toast.LENGTH_SHORT).show()
+                else {
+                    bitacoraRef.child("${maxId}").removeValue()
+                    reloadActivity()
+                }
+            }
+
+            override fun onTick(millisUntilFinished: Long) {}
+        }.start()
     }
 }
