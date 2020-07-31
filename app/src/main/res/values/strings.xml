@@ -114,4 +114,8 @@
     <string name="cap">USD</string>
     <string name="cerrarsesion">Cerrar sesión</string>
     <string name="descripcion">Descripción</string>
+    <string name="nacimiento">Nacimiento: </string>
+    <string name="name">"Nombre: "</string>
+    <string name="cel">"Teléfono: "</string>
+    <string name="educadores">Educadores</string>
 </resources>
