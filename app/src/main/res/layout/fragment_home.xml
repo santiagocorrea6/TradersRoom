@@ -22,45 +22,58 @@
                 android:id="@+id/imageView9"
                 android:layout_width="match_parent"
                 android:layout_height="730dp"
+                android:layout_marginTop="-50dp"
+                android:layout_marginBottom="-50dp"
                 android:src="@drawable/quienessomos" />
 
             <ImageView
                 android:id="@+id/imageView14"
                 android:layout_width="match_parent"
                 android:layout_height="730dp"
+                android:layout_marginTop="-50dp"
+                android:layout_marginBottom="-50dp"
                 android:src="@drawable/maestriaenlibertad" />
 
             <ImageView
                 android:id="@+id/imageView15"
                 android:layout_width="match_parent"
                 android:layout_height="730dp"
+                android:layout_marginTop="-50dp"
+                android:layout_marginBottom="-50dp"
                 android:src="@drawable/trade" />
 
             <ImageView
                 android:id="@+id/imageView16"
                 android:layout_width="match_parent"
                 android:layout_height="730dp"
+                android:layout_marginTop="-50dp"
+                android:layout_marginBottom="-50dp"
                 android:src="@drawable/lead" />
 
             <ImageView
                 android:id="@+id/imageView17"
                 android:layout_width="match_parent"
                 android:layout_height="730dp"
+                android:layout_marginTop="-50dp"
+                android:layout_marginBottom="-50dp"
                 android:src="@drawable/impac" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="-50dp"
                 android:orientation="horizontal">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="-50dp">
 
                     <ImageView
                         android:id="@+id/imageView18"
                         android:layout_width="match_parent"
                         android:layout_height="730dp"
+                        android:layout_marginTop="-50dp"
                         android:src="@drawable/aprendertrading"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -81,6 +94,75 @@
                         app:layout_constraintTop_toTopOf="@+id/imageView18" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-50dp"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="-50dp">
+
+                    <ImageView
+                        android:id="@+id/imageView19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="730dp"
+                        android:src="@drawable/par"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/button2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="580dp"
+                        android:background="@drawable/input_field"
+                        android:text="@string/lideres"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.79"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-50dp"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="-50dp">
+
+                    <ImageView
+                        android:id="@+id/imageView20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="730dp"
+                        android:src="@drawable/bitacora"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/button3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="590dp"
+                        android:background="@drawable/input_field"
+                        android:text="@string/homebitacora"
+                        android:textColor="@android:color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 
         </LinearLayout>
