@@ -118,4 +118,5 @@
     <string name="name">"Nombre: "</string>
     <string name="cel">"Teléfono: "</string>
     <string name="educadores">Educadores</string>
+    <string name="homebitacora">Bitácora</string>
 </resources>
