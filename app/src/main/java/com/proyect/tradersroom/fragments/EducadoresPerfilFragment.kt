@@ -1,9 +1,14 @@
 package com.proyect.tradersroom.fragments
 
 //https://github.com/lopspower/CircularImageView
+import android.content.Intent
+import android.graphics.text.LineBreaker.JUSTIFICATION_MODE_INTER_WORD
+import android.os.Build
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -13,7 +18,8 @@ import com.proyect.tradersroom.R
 import com.proyect.tradersroom.model.remote.EducadorRemote
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_personas.*
-import kotlinx.android.synthetic.main.fragment_personas.et_nombre
+import java.util.*
+import kotlin.collections.HashMap
 
 
 class EducadoresPerfilFragment : AppCompatActivity() {
@@ -57,6 +63,7 @@ class EducadoresPerfilFragment : AppCompatActivity() {
         et_profesion.visibility = View.VISIBLE
         et_ciudad.visibility = View.VISIBLE
         et_descripcion.visibility = View.VISIBLE
+        et_sesion.visibility = View.VISIBLE
 
         bt_saveChanges.visibility = View.VISIBLE
     }
@@ -70,6 +77,7 @@ class EducadoresPerfilFragment : AppCompatActivity() {
         et_profesion.visibility = View.GONE
         et_ciudad.visibility = View.GONE
         et_descripcion.visibility = View.GONE
+        et_sesion.visibility = View.GONE
     }
 
     private fun ocultarTextView() {
@@ -84,6 +92,7 @@ class EducadoresPerfilFragment : AppCompatActivity() {
         tv_profesion.visibility = View.GONE
         tv_ciudad.visibility = View.GONE
         tv_descripcion.visibility = View.GONE
+        tv_sesion.visibility = View.GONE
     }
 
     private fun consultarCorreo(): String? {
@@ -107,18 +116,13 @@ class EducadoresPerfilFragment : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
             }
 
+            @RequiresApi(Build.VERSION_CODES.O)
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(datasnapshot: DataSnapshot in snapshot.children){
                     val educador = datasnapshot.getValue(EducadorRemote::class.java)
 
                     if (educador?.id == idEducador){
-                        tv_nombre.setText(educador?.nombre)
-                        tv_roll.setText(educador?.roll)
-                        tv_habilidades.setText(educador?.habilidades)
-                        tv_profesion.setText(educador?.profesion)
-                        tv_ciudad.setText(educador?.ciudad)
-                        tv_descripcion.setText(educador?.descripcion)
-                        Picasso.get().load(educador?.foto).into(circularImageView)
+                        cargarTextView(educador)
 
                         bt_config.setOnClickListener {
                             ocultarTextView()
@@ -129,12 +133,60 @@ class EducadoresPerfilFragment : AppCompatActivity() {
                             }
                         }
 
+                        bt_calendar.setOnClickListener {
+                            eventoGoogleCalendar(educador)
+                        }
+
                     }
                 }
             }
         }
 
         myRef.addValueEventListener(postListener)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun cargarTextView(educador: EducadorRemote?) {
+        tv_nombre.setText(educador?.nombre)
+        tv_roll.setText(educador?.roll)
+        tv_habilidades.setText(educador?.habilidades)
+        tv_profesion.setText(educador?.profesion)
+        tv_ciudad.setText(educador?.ciudad)
+        tv_descripcion.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD)
+        tv_descripcion.setText(educador?.descripcion)
+        tv_sesion.setText("${educador?.dias}: ${educador?.hora}:00 horas")
+        Picasso.get().load(educador?.foto).into(circularImageView)
+        Picasso.get().load(educador?.foto2).into(iv_fondo)
+    }
+
+    private fun eventoGoogleCalendar(educador: EducadorRemote?) {
+        val dia = educador!!.dia?.toInt()
+        val hora = educador!!.hora?.toInt()
+
+        val startMillis: Long = Calendar.getInstance().run {
+            set(2020, 7, dia, hora, 0)
+            timeInMillis
+        }
+
+        val zoom =
+            "<a href=\"https://zoom.us/j/93227502760?pwd=Q2VPQ0dCeS9OMHZ6OFh0WGMrZnF6UT09\">LINK DE ACCESO</a>"
+
+        val intent = Intent(Intent.ACTION_INSERT)
+            .setData(CalendarContract.Events.CONTENT_URI)
+            .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startMillis)
+            .putExtra(CalendarContract.Events.DURATION, "PT1H")
+            .putExtra(CalendarContract.Events.RRULE, "FREQ=WEEKLY")
+            .putExtra(CalendarContract.Events.TITLE, "Sesion Operativa - " + educador?.nombre)
+            .putExtra(CalendarContract.Events.ORGANIZER, "TradersRoom")
+            .putExtra(CalendarContract.Events.DESCRIPTION, zoom)
+            .putExtra(CalendarContract.Events.EVENT_LOCATION, "Zoom meetings")
+            .putExtra(CalendarContract.Reminders.MINUTES, 15)
+            .putExtra(CalendarContract.Reminders.METHOD, CalendarContract.Reminders.METHOD_ALERT)
+            .putExtra(
+                CalendarContract.Events.AVAILABILITY,
+                CalendarContract.Events.AVAILABILITY_BUSY
+            )
+        startActivity(intent)
     }
 
     private fun cargarDatosEditText(educador: EducadorRemote?) {
@@ -144,6 +196,7 @@ class EducadoresPerfilFragment : AppCompatActivity() {
         et_profesion.setText(educador?.profesion)
         et_ciudad.setText(educador?.ciudad)
         et_descripcion.setText(educador?.descripcion)
+        et_sesion.setText("${educador?.dias}: ${educador?.hora}:00 horas")
     }
 
     private fun actualizarDatos(idEducador: String?) {

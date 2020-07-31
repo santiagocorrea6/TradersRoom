@@ -20,13 +20,14 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/iv_fondo"
                 android:layout_width="300dp"
                 android:layout_height="412dp"
-                android:layout_marginBottom="300dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/aleja" />
 
             <LinearLayout
@@ -56,15 +57,36 @@
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
+                <EditText
+                    android:id="@+id/et_nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
                 <TextView
-                    android:id="@+id/tv_roll"
+                android:id="@+id/tv_roll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="sans-serif-condensed-light"
+                android:paddingLeft="15dp"
+                android:paddingRight="10dp"
+                android:text="hola"
+                android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/et_roll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:fontFamily="sans-serif-condensed-light"
                     android:paddingLeft="15dp"
                     android:paddingRight="10dp"
-                    android:text="hola"
                     android:textColor="@color/white" />
 
                 <LinearLayout
@@ -90,6 +112,17 @@
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:text="hola"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/et_profesion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="12"
+                        android:fontFamily="sans-serif-condensed"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
@@ -121,6 +154,17 @@
                         android:text="hola"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/et_habilidades"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="12"
+                        android:fontFamily="sans-serif-condensed"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -146,6 +190,17 @@
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:text="hola"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/et_ciudad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="12"
+                        android:fontFamily="sans-serif-condensed"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
@@ -202,6 +257,19 @@
                         android:paddingBottom="5dp"
                         android:text="hola"
                         android:textColor="@color/white" />
+
+                    <EditText
+                        android:id="@+id/et_descripcion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="left"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="5dp"
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -210,6 +278,7 @@
                 android:id="@+id/circularImageView"
                 android:layout_width="125dp"
                 android:layout_height="132dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="270dp"
                 android:src="@drawable/toro"
                 app:civ_border_color="@color/black"
@@ -223,7 +292,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/bt_saveChanges"
+                android:id="@+id/bt_saveChanges2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="340dp"
@@ -235,7 +304,7 @@
                 app:srcCompat="@drawable/ic_baseline_save_24" />
 
             <ImageButton
-                android:id="@+id/bt_config"
+                android:id="@+id/bt_config2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="340dp"
@@ -245,6 +314,43 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_baseline_settings_24" />
+
+            <ImageButton
+                android:id="@+id/bt_facebook"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_marginTop="341dp"
+                android:layout_marginEnd="40dp"
+                android:background="@drawable/facebook"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.89"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/bt_wpp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="338dp"
+                android:layout_marginEnd="110dp"
+                android:background="@drawable/whatsapp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.89"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/bt_instagram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="339dp"
+                android:layout_marginEnd="75dp"
+                android:background="@drawable/instagram"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.89"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

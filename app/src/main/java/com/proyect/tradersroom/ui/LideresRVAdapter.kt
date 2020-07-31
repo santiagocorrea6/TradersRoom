@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.mikhaellopez.circularimageview.CircularImageView
 import com.proyect.tradersroom.R
 import com.proyect.tradersroom.model.remote.LiderRemote
 import com.squareup.picasso.Picasso
@@ -41,6 +42,20 @@ class LideresRVAdapter (
             Picasso.get().load(lider.foto).into(itemView.iv_foto);
 
             itemView.setOnClickListener { itemClickListener.onItemClick("${lider.id}") }
+
+            imagenCircular()
+        }
+    }
+
+    private fun LideresViewHolder.imagenCircular() {
+        val circularImageView = itemView.findViewById<CircularImageView>(R.id.iv_foto)
+        circularImageView.apply {
+            circleColorDirection = CircularImageView.GradientDirection.TOP_TO_BOTTOM
+            borderWidth = 3f
+            borderColorDirection = CircularImageView.GradientDirection.TOP_TO_BOTTOM
+            shadowEnable = true
+            shadowRadius = 7f
+            shadowGravity = CircularImageView.ShadowGravity.CENTER
         }
     }
 }
