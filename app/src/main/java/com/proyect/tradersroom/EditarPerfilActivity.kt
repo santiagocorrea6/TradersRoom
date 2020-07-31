@@ -58,7 +58,7 @@ class EditarPerfilActivity : AppCompatActivity() {
             //Recortar imagen
             CropImage.activity(imageuri)
                 .setGuidelines(CropImageView.Guidelines.ON)
-                .setRequestedSize(480,480)
+                .setRequestedSize(1075,1075)
                 .setAspectRatio(1, 1).start(this)
         }
 
@@ -72,8 +72,8 @@ class EditarPerfilActivity : AppCompatActivity() {
                 Picasso.get().load(url).into(ib_foto)
 
                 val thumb_bitmap = Compressor(this)
-                    .setMaxWidth(480)
-                    .setMaxHeight(480)
+                    .setMaxWidth(1075)
+                    .setMaxHeight(1075)
                     .setQuality(100)
                     .compressToBitmap(url)
 
